@@ -50,7 +50,7 @@ const data = [
 ];
 function Portfolio() {
   return (
-    <section id="portfolio" className="bg-gray-900">
+    <section id="portfolio">
       <h5>Recent Work</h5>
       <h2>Portfolio</h2>
 

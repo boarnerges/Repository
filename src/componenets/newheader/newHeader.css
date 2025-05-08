@@ -41,17 +41,17 @@
   1% {
     background-position: 0 0;
     opacity: 1;
-    border-right: 1px solid orange;
+    border-right: 1px solid teal;
   }
   50% {
     background-position: 150px 0;
     opacity: 1;
-    border-right: 1px solid orange;
+    border-right: 1px solid teal;
   }
   100% {
     background-position: 400px 0;
     opacity: 1;
-    border-right: 1px solid orange;
+    border-right: 1px solid teal;
   }
 }
 
@@ -61,7 +61,7 @@
   }
   1%,
   99% {
-    border-right: 1px solid orange;
+    border-right: 1px solid teal;
   }
   100% {
     border-right: none;
@@ -72,4 +72,28 @@
   50% {
     border-color: transparent;
   }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.fadeInUp-animation {
+  animation: 2.5s fadeInUp;
+  animation-delay: 5s;
+  animation-fill-mode: both; /* Keeps the final state after animation */
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(100%);
+  animation: fadeInUp 2.5s forwards;
+  animation-delay: 5s;
 }

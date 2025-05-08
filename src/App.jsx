@@ -16,12 +16,12 @@ const App = () => {
       <NewHeader />
       <Nav />
       <About />
-      <Experience />
-      <Services />
+      {/* <Experience /> */}
+      {/* <Services /> */}
       <Portfolio />
       {/* <Testimonials /> */}
       {/* <Contact /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

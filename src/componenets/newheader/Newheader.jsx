@@ -5,22 +5,26 @@ export default function NewHeader() {
   return (
     <div className="bg-gray-900 container">
       <BoarnergesLogo />
-      <main className="flex flex-col justify-center items-start h-screen">
+      <main className="flex flex-col max-w-5xl mx-auto justify-center items-start h-screen">
         <div className="container__name flex flex-col gap-2">
           <div className="flex gap-2">
             <span className="text-2xl animate-wiggle">👋</span>
             <p className="text-teal-400">Hi, my name is</p>
           </div>
-          <h2 className="name text-5xl py-2">Segun.</h2>
+          <h2 className="name text-5xl my-4 py-4">Segun.</h2>
         </div>
 
-        <h2 className="text-5xl font-bold text-gray-400 mt-2 mb-2 animate-fade-in-up animation-delay-400">
+        <h2 className="text-5xl md:text-7xl font-bold text-gray-400 py-4 animate-fade-in-up ">
           I build things for the web.
         </h2>
-        <p className="text-gray-400 max-w-2xl pt-2 animation animate-fade-in-up animation-delay-600">
+        <p className="text-gray-400 max-w-2xl md:max-w-xl pt-2 mt-2 fadeInUp-animation mb-8">
           I'm a software engineer specializing in building exceptional digital
           experiences.
         </p>
+
+        <button className="border border-teal-400 text-teal-400 px-6 py-3  fadeInUp-animation hover:bg-teal-400/10 transition-colors">
+          Get In Touch
+        </button>
       </main>
     </div>
   );
