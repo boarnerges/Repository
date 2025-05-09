@@ -12,7 +12,7 @@ export default function BoarnergesLogo() {
   const characters = text.split("");
 
   return (
-    <div className="bg-gray-900  flex justify-start items-center overflow-hidden h-32">
+    <div className="bg-gray-900 flex justify-start cursor-pointer items-center overflow-hidden h-32">
       <div className="flex items-center gap-2">
         <h1 className="font-sans font-bold text-5xl tracking-tight flex">
           {characters.map((char, index) => (

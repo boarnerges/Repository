@@ -5,13 +5,13 @@ export default function NewHeader() {
   return (
     <div className="bg-gray-900 container">
       <BoarnergesLogo />
-      <main className="flex flex-col max-w-5xl mx-auto justify-center items-start h-screen">
+      <main className="flex flex-col max-w-5xl mx-auto mt-25 justify-center items-start ">
         <div className="container__name flex flex-col gap-2">
           <div className="flex gap-2">
             <span className="text-2xl animate-wiggle">👋</span>
             <p className="text-teal-400">Hi, my name is</p>
           </div>
-          <h2 className="name text-5xl my-4 py-4">Segun.</h2>
+          <h2 className="name text-5xl md:my-4 md:py-4">Segun.</h2>
         </div>
 
         <h2 className="text-5xl md:text-7xl font-bold text-gray-400 py-4 animate-fade-in-up ">
@@ -22,9 +22,9 @@ export default function NewHeader() {
           experiences.
         </p>
 
-        <button className="border border-teal-400 text-teal-400 px-6 py-3  fadeInUp-animation hover:bg-teal-400/10 transition-colors">
+        <p className="border border-teal-400 px-6 py-3 cursor-pointer fadeInUp-animation hover:bg-teal-400/10 transition-colors">
           Get In Touch
-        </button>
+        </p>
       </main>
     </div>
   );

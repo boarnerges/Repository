@@ -86,7 +86,7 @@
 }
 
 .fadeInUp-animation {
-  animation: 2.5s fadeInUp;
+  animation: 1.5s fadeInUp;
   animation-delay: 5s;
   animation-fill-mode: both; /* Keeps the final state after animation */
 }
@@ -94,6 +94,6 @@
 .animate-fade-in-up {
   opacity: 0;
   transform: translateY(100%);
-  animation: fadeInUp 2.5s forwards;
+  animation: fadeInUp 1s forwards;
   animation-delay: 5s;
 }

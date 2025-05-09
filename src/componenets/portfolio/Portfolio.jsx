@@ -51,10 +51,14 @@ const data = [
 function Portfolio() {
   return (
     <section id="portfolio">
-      <h5>Recent Work</h5>
-      <h2>Portfolio</h2>
-
       <div className="container portfolio__container">
+        <div className="items-start  gap-3">
+          <h3 className="text-xl md:text-2xl items-left font-bold text-gray-100 py-4 ">
+            <span className=" text-lg font-light text-teal-400">01.</span> Some
+            Things I have Built
+          </h3>
+          <div className="bg-teal-400 w-[20%] align-right h-0.5"></div>
+        </div>
         {data.map(({ id, image, title, github, demo }) => {
           return (
             <article key={id} className="portfolio__item">
@@ -63,9 +67,6 @@ function Portfolio() {
               </div>
               <h3>{title}</h3>
               <div className="portfolio__item-cta">
-                <a href={github} className="btn">
-                  Github
-                </a>
                 <a href={demo} className="btn btn-primary" target="_blank">
                   Live Demo
                 </a>
