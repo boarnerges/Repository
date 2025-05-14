@@ -1,7 +1,7 @@
 import "./newHeader.css";
 import BoarnergesLogo from "../boarnergesLogo/BoarnergesLogo";
 
-export default function NewHeader() {
+export default function Header() {
   return (
     <div className="bg-gray-900 container">
       <BoarnergesLogo />
