@@ -67,7 +67,12 @@ function Portfolio() {
               </div>
               <h3>{title}</h3>
               <div className="portfolio__item-cta">
-                <a href={demo} className="btn btn-primary" target="_blank">
+                <a
+                  href={demo}
+                  className="btn btn-primary"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Live Demo
                 </a>
               </div>
