@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css"; // Make sure your CSS file includes styles for .stuck-grid, .grid-item, and .special
+import "./about.css"; // Make sure your CSS file includes styles for .stuck-grid, .grid-item, and .special
 
 const About = () => {
   return (
