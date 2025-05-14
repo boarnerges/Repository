@@ -1,10 +1,10 @@
-import Nav from "./componenets/nav/Nav";
-import About from "./componenets/about/About";
+import Nav from "./components/nav/Nav";
+import About from "./components/about/About";
 
-import Portfolio from "./componenets/portfolio/Portfolio";
+import Portfolio from "./components/portfolio/Portfolio";
 
-import NewHeader from "./componenets/newheader/NewHeader";
-import Cta from "./componenets/CTA/cta";
+import NewHeader from "./components/newheader/NewHeader";
+import Cta from "./components/CTA/cta";
 
 const App = () => {
   return (
