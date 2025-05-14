@@ -3,13 +3,14 @@ import About from "./components/about/About";
 
 import Portfolio from "./components/portfolio/Portfolio";
 
-import NewHeader from "./components/newheader/NewHeader";
-import Cta from "./components/CTA/cta";
+import Cta from "./components/cta/Cta";
+import NewHeader from "./components/newheader/newheader";
 
 const App = () => {
   return (
     <>
       <NewHeader />
+
       <Nav />
       <About />
       <Portfolio />
