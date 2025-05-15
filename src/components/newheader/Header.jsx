@@ -22,9 +22,11 @@ export default function Header() {
           experiences.
         </p>
 
-        <p className="border border-teal-400 px-6 py-3 cursor-pointer fadeInUp-animation hover:bg-teal-400/10 transition-colors">
-          Get In Touch
-        </p>
+        <a href="mailto:olujawo1996@gmail.com">
+          <p className="border border-teal-400 px-6 py-3 cursor-pointer fadeInUp-animation hover:bg-teal-400/10 transition-colors">
+            Get In Touch
+          </p>
+        </a>
       </main>
     </div>
   );
