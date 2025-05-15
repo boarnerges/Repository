@@ -12,7 +12,7 @@ export default function BoarnergesLogo() {
   const characters = text.split("");
 
   return (
-    <div className="bg-gray-900 flex justify-start cursor-pointer items-center overflow-hidden h-32">
+    <div className="bg-gray-900 flex justify-between cursor-pointer items-center overflow-hidden h-32">
       <div className="flex items-center gap-2">
         <h1 className="font-sans font-bold text-5xl tracking-tight flex">
           {characters.map((char, index) => (
@@ -57,6 +57,18 @@ export default function BoarnergesLogo() {
           &lt;/&gt;
         </span>
       </div>
+      <a
+        href="https://glittery-blini-097b77.netlify.app/"
+        className={`border border-teal-400 text-teal-400 px-4 py-2 rounded transition-all duration-500 transform hover:bg-teal-400/10
+                  ${
+                    show
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-16 opacity-0"
+                  }`}
+        style={{ transitionDelay: `${characters.length * 150 + 400}ms` }}
+      >
+        Resume
+      </a>
     </div>
   );
 }

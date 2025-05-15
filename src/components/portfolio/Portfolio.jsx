@@ -8,46 +8,41 @@ const data = [
   {
     id: 1,
     image: IMG1,
-    title: "Website Design for University",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/18591114-Website-Design-for-University",
+    title: "Boarnerges React Job Portal",
+    demo: "https://boarnergesjob.netlify.app/",
   },
   {
     id: 2,
     image: IMG2,
-    title: "Messenges Dashboard",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/18590733-Messenges-Dashboard",
+    title: "Pitch Deck Website",
+    demo: "https://itch-deck.netlify.app/",
   },
   {
     id: 3,
     image: IMG3,
-    title: "TTC-APP",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/18590195-TTC-APP",
+    title: "Dies Game",
+    demo: "https://boarnergesdies.netlify.app/",
   },
   {
     id: 4,
-    image: IMG2,
-    title: "Messenges Dashboard",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/18590733-Messenges-Dashboard",
+    image: IMG4,
+    title: "Guess Game",
+    demo: "https://boarnergesguess.netlify.app/",
   },
   {
     id: 5,
-    image: IMG1,
-    title: "Website Design for University",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/18591114-Website-Design-for-University",
+    image: IMG5,
+    title: "Itump Landing Page",
+    demo: "https://itump.netlify.app/",
   },
   {
     id: 6,
-    image: IMG3,
-    title: "TTC-APP",
-    github: "https://github.com",
-    demo: "https://dribbble.com/shots/18590195-TTC-APP",
+    image: IMG6,
+    title: "Layeres Landing Page",
+    demo: "https://vercel.com/boarnerges-s-projects/landing-page",
   },
 ];
+
 function Portfolio() {
   return (
     <section id="portfolio">
