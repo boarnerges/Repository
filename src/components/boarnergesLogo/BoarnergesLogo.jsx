@@ -59,6 +59,8 @@ export default function BoarnergesLogo() {
       </div>
       <a
         href="https://glittery-blini-097b77.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
         className={`border border-teal-400 text-teal-400 px-4 py-2 rounded transition-all duration-500 transform hover:bg-teal-400/10
                   ${
                     show
