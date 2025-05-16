@@ -18,7 +18,7 @@ export default function BoarnergesLogo() {
   };
 
   return (
-    <div className="bg-gray-900 mt-10 flex justify-between items-center overflow-hidden h-32">
+    <div className="bg-gray-900 mt-10 flex justify-between items-center overflow-hidden h-10 md:h-32">
       <div className="flex items-center gap-2">
         <h1 className="font-sans font-bold text-5xl tracking-tight flex">
           {characters.map((char, index) => (
