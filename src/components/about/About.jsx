@@ -3,7 +3,7 @@ import "./about.css"; // Make sure your CSS file includes styles for .stuck-grid
 
 const About = () => {
   return (
-    <section id="about" class="scroll-container hidden md:block">
+    <section id="about" className="scroll-container hidden md:block">
       <div className="stuck-grid">
         <div className="grid-item special">
           <b>Frontend</b>
