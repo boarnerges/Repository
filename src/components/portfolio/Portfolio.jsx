@@ -24,7 +24,7 @@ const data = [
     id: 3,
     image: IMG3,
     title: "Dies Game",
-    demo: "https://boarnergesdies.netlify.app/",
+    demo: "https://boarnergesdi.netlify.app/",
   },
   {
     id: 4,
