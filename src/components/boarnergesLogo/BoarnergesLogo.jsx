@@ -57,7 +57,9 @@ export default function BoarnergesLogo() {
 
       {/* Desktop view */}
       <a
-        href="#resume"
+        href="https://boarnergesresume.netlify.app"
+        target="_blank"
+        rel="noopener noreferrer"
         className={`hidden md:block border border-teal-400 text-teal-400 px-4 py-2 rounded transition-all duration-500 transform hover:bg-teal-400/10 ${
           show ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
         }`}
@@ -87,7 +89,7 @@ export default function BoarnergesLogo() {
               aria-labelledby="options-menu"
             >
               <a
-                href="https://glittery-blini-097b77.netlify.app/"
+                href="https://boarnergesresume.netlify.app"
                 className="block px-4 py-1 text-sm text-teal-400 hover:bg-gray-700"
                 role="menuitem"
                 target="_blank"
