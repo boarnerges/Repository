@@ -8,33 +8,33 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import { useState } from "react";
 
 const Nav = () => {
-  const [activeNav, setACtiveNav] = useState("#");
+  const [activeNav, setActiveNav] = useState("#");
   return (
     <nav className="bg-gray-900">
       <a
         href="#"
-        onClick={() => setACtiveNav("#")}
+        onClick={() => setActiveNav("#")}
         className={activeNav === "#" ? "active" : ""}
       >
         <AiOutlineHome />
       </a>
       <a
         href="#about"
-        onClick={() => setACtiveNav("#about")}
-        className={activeNav === "#about" ? "active" : ""}
+        onClick={() => setActiveNav("#about")}
+        className={`hidden md:block ${activeNav === "#about" ? "active" : ""}`}
       >
         <AiOutlineUser />
       </a>
       <a
         href="#portfolio"
-        onClick={() => setACtiveNav("#portfolio")}
+        onClick={() => setActiveNav("#portfolio")}
         className={activeNav === "#portfolio" ? "active" : ""}
       >
         <RiServiceFill />
       </a>
       <a
         href="#cta"
-        onClick={() => setACtiveNav("#cta")}
+        onClick={() => setActiveNav("#cta")}
         className={activeNav === "#cta" ? "active" : ""}
       >
         <BiMessageSquareDetail />
