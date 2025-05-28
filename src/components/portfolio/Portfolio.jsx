@@ -6,7 +6,7 @@ import IMG3 from "../../assets/Image_3.jpg";
 import IMG4 from "../../assets/Image_4.jpg";
 import IMG5 from "../../assets/Image_5.jpg";
 import IMG6 from "../../assets/Image_6.jpg";
-import IMG7 from "../../assets/Image_7.png";
+import IMG from "../../assets/Image_7.png";
 
 const data = [
   {
@@ -48,7 +48,7 @@ const data = [
 
   {
     id: 7,
-    image: IMG7,
+    image: IMG,
     title: "Boarnerges Admin Dashboard",
     demo: "https://boarnergesdashboard.netlify.app/",
   },
