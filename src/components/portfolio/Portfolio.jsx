@@ -6,7 +6,7 @@ import IMG3 from "../../assets/Image_3.jpg";
 import IMG4 from "../../assets/Image_4.jpg";
 import IMG5 from "../../assets/Image_5.jpg";
 import IMG6 from "../../assets/Image_6.jpg";
-import IMG from "../../assets/Image_7.png";
+import IMG7 from "../../assets/Image_7.png";
 
 const data = [
   {
@@ -48,7 +48,7 @@ const data = [
 
   {
     id: 7,
-    image: IMG,
+    image: IMG7,
     title: "Boarnerges Admin Dashboard",
     demo: "https://boarnergesdashboard.netlify.app/",
   },
@@ -65,7 +65,7 @@ function Portfolio() {
           </h3>
           <div className="bg-teal-400 w-[20%] align-right h-0.5"></div>
         </div>
-        {data.map(({ id, image, title, github, demo }) => {
+        {data.map(({ id, image, title, demo }) => {
           return (
             <article key={id} className="portfolio__item">
               <div className="portfolio__item-image">
