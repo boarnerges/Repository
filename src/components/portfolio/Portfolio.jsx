@@ -45,11 +45,10 @@ const data = [
     title: "Layeres Landing Page",
     demo: "https://vercel.com/boarnerges-s-projects/landing-page",
   },
-
   {
     id: 7,
     image: IMG7,
-    title: "Boarnerges Admin Dashboard",
+    title: "Admin Dashboard",
     demo: "https://boarnergesdashboard.netlify.app/",
   },
 ];
