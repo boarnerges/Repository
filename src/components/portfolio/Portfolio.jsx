@@ -7,6 +7,7 @@ import IMG4 from "../../assets/Image_4.jpg";
 import IMG5 from "../../assets/Image_5.jpg";
 import IMG6 from "../../assets/Image_6.jpg";
 import IMG7 from "../../assets/Image.png";
+import IMG8 from "../../assets/Image_8.png";
 
 const data = [
   {
@@ -54,7 +55,7 @@ const data = [
 
   {
     id: 8,
-    image: IMG7,
+    image: IMG8,
     title: "School Management System",
     demo: "https://studmanagement.netlify.app/",
   },
