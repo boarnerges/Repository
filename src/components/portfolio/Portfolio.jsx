@@ -51,6 +51,13 @@ const data = [
     title: "Admin Dashboard",
     demo: "https://boarnergesdashboard.netlify.app/",
   },
+
+  {
+    id: 8,
+    image: IMG7,
+    title: "School Management System",
+    demo: "https://studmanagement.netlify.app/",
+  },
 ];
 
 function Portfolio() {
