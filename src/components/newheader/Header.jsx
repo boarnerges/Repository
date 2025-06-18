@@ -18,8 +18,8 @@ export default function Header() {
           I build things for the web.
         </h2>
         <p className="text-gray-400 max-w-2xl md:max-w-xl pt-2 mt-2 fadeInUp-animation mb-8">
-          I'm a Frontend engineer, architect, technical manager who loves to
-          code. I specialize in building exceptional digital experiences.
+          I'm a Frontend engineer. I specialize in building exceptional digital
+          experiences.
         </p>
 
         <a
