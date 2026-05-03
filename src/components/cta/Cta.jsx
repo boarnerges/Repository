@@ -3,6 +3,9 @@ import { MdEmail } from "react-icons/md";
 import "./cta.css";
 
 const Cta = () => {
+  const emailAddress = "olujawo1996@gmail.com";
+  const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}`;
+
   return (
     <div
       id="cta"
@@ -56,7 +59,9 @@ const Cta = () => {
           <FaLinkedin className="text-2xl" />
         </a>
         <a
-          href="mailto:olujawo1996@gmail.com"
+          href={emailComposeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label="Send an email"
           className="text-gray-400 hover:text-teal-400 transition-colors"
         >
@@ -65,7 +70,9 @@ const Cta = () => {
       </div>
 
       <a
-        href="mailto:olujawo1996@gmail.com"
+        href={emailComposeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className="cta-button border border-teal-400 text-teal-400 px-6 py-3 mt-10 w-fit cursor-pointer fadeInUp-animation hover:bg-teal-400/10 transition-colors"
       >
         Say Hello
