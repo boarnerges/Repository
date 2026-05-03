@@ -3,11 +3,18 @@ import { Menu } from "lucide-react";
 
 export default function BoarnergesLogo() {
   const [show, setShow] = useState(false);
+  const [waveReady, setWaveReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     // Trigger animation after component mount
     setShow(true);
+
+    const timer = setTimeout(() => {
+      setWaveReady(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const text = "Boarnerges";
@@ -19,17 +26,20 @@ export default function BoarnergesLogo() {
 
   return (
     <div className="site-brand bg-gray-900 flex justify-between items-center">
-      <div className="flex items-center gap-2 min-w-0">
+      <div className="brand-mark flex items-center gap-2 min-w-0">
         <p className="brand-wordmark font-sans font-bold tracking-tight flex" aria-label="Boarnerges">
           {characters.map((char, index) => (
             <span
               key={index}
               className={`${
                 index === 0 ? "text-teal-400 relative" : "text-gray-300"
-              } transition-all duration-500 transform ${
+              } ${waveReady ? "brand-letter" : ""} transition-all duration-500 transform ${
                 show ? "translate-y-0 opacity-100" : "-translate-y-16 opacity-0"
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{
+                transitionDelay: `${index * 150}ms`,
+                animationDelay: `${index * 70}ms`,
+              }}
             >
               {char}
               {index === 0 && (
@@ -46,7 +56,7 @@ export default function BoarnergesLogo() {
           ))}
         </p>
         <span
-          className={`brand-code text-teal-400 font-mono transition-all duration-500 transform ${
+          className={`brand-code brand-code--bounce text-teal-400 font-mono transition-all duration-500 transform ${
             show ? "translate-y-0 opacity-100" : "-translate-y-16 opacity-0"
           }`}
           style={{ transitionDelay: `${characters.length * 150 + 300}ms` }}
