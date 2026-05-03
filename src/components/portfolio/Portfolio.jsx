@@ -1,92 +1,128 @@
-import React from "react";
 import "./portfolio.css";
-import IMG1 from "../../assets/Image_1.jpg";
-import IMG2 from "../../assets/Image_2.jpeg";
-import IMG3 from "../../assets/Image_3.jpg";
-import IMG4 from "../../assets/Image_4.jpg";
-import IMG5 from "../../assets/Image_5.jpg";
-import IMG6 from "../../assets/Image_6.jpg";
-import IMG7 from "../../assets/Image.png";
-import IMG8 from "../../assets/Image_8.png";
+import { ExternalLink } from "lucide-react";
+import IMG1 from "../../assets/job-portal.jpg";
+import IMG2 from "../../assets/admin-dashboard.jpg";
+import IMG3 from "../../assets/dice-game.jpg";
 
 const data = [
   {
     id: 1,
     image: IMG1,
-    title: "Boarnerges React Job Portal",
+    imageWidth: 1080,
+    imageHeight: 519,
+    title: "Job Portal",
+    description:
+      "A job search experience with a clean listing flow, responsive pages, and focused calls to action.",
+    tags: ["React", "Vite", "Responsive UI"],
     demo: "https://boarnergesjob.netlify.app/",
   },
+
   {
     id: 2,
     image: IMG2,
-    title: "Pitch Deck Website",
-    demo: "https://itch-deck.netlify.app/",
+    imageWidth: 1400,
+    imageHeight: 807,
+    title: "Admin Dashboard",
+    description:
+      "A responsive admin interface for scanning key metrics, managing records, and moving through operational views quickly.",
+    tags: ["Dashboard", "React", "Tailwind"],
+    demo: "https://boarnergesdashboard.netlify.app/",
   },
   {
     id: 3,
     image: IMG3,
-    title: "Dies Game",
-    demo: "https://boarnergesdi.netlify.app/",
-  },
-  {
-    id: 4,
-    image: IMG4,
-    title: "Guess Game",
-    demo: "https://boarnergesguess.netlify.app/",
-  },
-  {
-    id: 5,
-    image: IMG5,
-    title: "Itump Landing Page",
-    demo: "https://itump.netlify.app/",
-  },
-  {
-    id: 6,
-    image: IMG6,
-    title: "Layeres Landing Page",
-    demo: "https://vercel.com/boarnerges-s-projects/landing-page",
-  },
-  {
-    id: 7,
-    image: IMG7,
-    title: "Admin Dashboard",
-    demo: "https://boarnergesdashboard.netlify.app/",
-  },
-
-  {
-    id: 8,
-    image: IMG8,
-    title: "School Management System",
+    imageWidth: 1400,
+    imageHeight: 800,
+    title: "Student Management Platform",
+    description:
+      "A comprehensive solution for managing student information, tracking academic progress, and facilitating communication between stakeholders.",
+    tags: ["Management", "React", "Tailwind"],
     demo: "https://studmanagement.netlify.app/",
   },
 ];
 
 function Portfolio() {
   return (
-    <section id="portfolio">
-      <div className="container portfolio__container">
-        <div className="items-start  gap-3">
-          <h3 className="text-xl md:text-2xl items-left font-bold text-gray-100 py-4 ">
-            <span className=" text-lg font-light text-teal-400">01.</span> Some
-            Things I have Built
-          </h3>
-          <div className="bg-teal-400 w-[20%] align-right h-0.5"></div>
+    <section id="portfolio" className="portfolio">
+      <div className="container">
+        <div className="portfolio__header">
+          <p>Selected Work</p>
+          <div className="portfolio__heading-row">
+            <h2>
+              <span>01.</span> Some Things I Have Built
+            </h2>
+            <div aria-hidden="true" />
+          </div>
         </div>
-        {data.map(({ id, image, title, demo }) => {
-          return (
-            <article key={id} className="portfolio__item">
-              <div className="portfolio__item-image">
-                <img src={image} alt={title} />
-              </div>
-              <h3>{title}</h3>
-              <div className="portfolio__item-cta">
-                <a href={demo} className="btn btn-primary" target="_blank">
-                  Live Demo
-                </a>
-              </div>
-            </article>
-          );
-        })}
+
+        <div className="portfolio__container">
+          {data.map(
+            ({
+              id,
+              image,
+              imageWidth,
+              imageHeight,
+              title,
+              description,
+              tags,
+              demo,
+            }) => {
+              return (
+                <article key={id} className="portfolio__item">
+                  <a
+                    className="portfolio__item-image"
+                    href={demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${title} live demo`}
+                  >
+                    <img
+                      src={image}
+                      alt={`${title} screenshot`}
+                      width={imageWidth}
+                      height={imageHeight}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span>Project {String(id).padStart(2, "0")}</span>
+                  </a>
+
+                  <div className="portfolio__item-body">
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{description}</p>
+                    </div>
+
+                    <div
+                      className="portfolio__tags"
+                      aria-label={`${title} technologies`}
+                    >
+                      {tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="portfolio__item-cta">
+                    <a
+                      href={demo}
+                      className="btn btn-primary"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>Live Demo</span>
+                      <ExternalLink
+                        size={16}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                    </a>
+                  </div>
+                </article>
+              );
+            },
+          )}
+        </div>
       </div>
     </section>
   );

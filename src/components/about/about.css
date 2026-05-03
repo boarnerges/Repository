@@ -1,3 +1,11 @@
+.about-section {
+  margin-top: 3rem;
+}
+
+.mobile-about {
+  display: none;
+}
+
 @keyframes zoom-in {
   0% {
     transform: translateZ(-1000px);
@@ -21,6 +29,72 @@
   scroll-timeline-name: scroll-tl;
   scroll-timeline-axis: block;
   overflow-y: scroll;
+}
+
+@media screen and (max-width: 767px) {
+  .about-section {
+    margin-top: 1rem;
+  }
+
+  .scroll-container {
+    display: none;
+  }
+
+  .mobile-about {
+    display: block;
+  }
+
+  .mobile-about > p {
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .mobile-about h2 {
+    color: var(--color-white);
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.18;
+    margin: 0 0 1.5rem;
+  }
+
+  .mobile-about__grid {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .mobile-about__card {
+    background: rgba(19, 78, 74, 0.42);
+    border: 1px solid rgba(45, 212, 191, 0.18);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .mobile-about__card h3 {
+    color: var(--color-white);
+    font-size: 1rem;
+    font-weight: 650;
+    margin: 0 0 0.8rem;
+  }
+
+  .mobile-about__card div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .mobile-about__card span {
+    background: rgba(13, 148, 136, 0.16);
+    border: 1px solid rgba(45, 212, 191, 0.16);
+    border-radius: 999px;
+    color: #99f6e4;
+    font-size: 0.75rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+  }
 }
 
 .stuck-grid {

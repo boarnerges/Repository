@@ -18,9 +18,9 @@ export default function BoarnergesLogo() {
   };
 
   return (
-    <div className="bg-gray-900 mt-10 flex justify-between items-center overflow-hidden h-10 md:h-32">
-      <div className="flex items-center gap-2">
-        <h1 className="font-sans font-bold text-5xl tracking-tight flex">
+    <div className="site-brand bg-gray-900 flex justify-between items-center">
+      <div className="flex items-center gap-2 min-w-0">
+        <p className="brand-wordmark font-sans font-bold tracking-tight flex" aria-label="Boarnerges">
           {characters.map((char, index) => (
             <span
               key={index}
@@ -44,9 +44,9 @@ export default function BoarnergesLogo() {
               )}
             </span>
           ))}
-        </h1>
+        </p>
         <span
-          className={`text-teal-400 font-mono text-2xl transition-all duration-500 transform ${
+          className={`brand-code text-teal-400 font-mono transition-all duration-500 transform ${
             show ? "translate-y-0 opacity-100" : "-translate-y-16 opacity-0"
           }`}
           style={{ transitionDelay: `${characters.length * 150 + 300}ms` }}
@@ -71,26 +71,34 @@ export default function BoarnergesLogo() {
       {/* Mobile view */}
       <div className="md:hidden relative">
         <button
+          id="mobile-menu-button"
+          type="button"
           onClick={toggleMenu}
           className={`text-teal-400 p-2 rounded transition-all duration-500 transform ${
             show ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
           }`}
           style={{ transitionDelay: `${characters.length * 150 + 400}ms` }}
+          aria-controls="mobile-resume-menu"
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           <Menu size={24} />
         </button>
 
         {menuOpen && (
-          <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
+          <div
+            id="mobile-resume-menu"
+            className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5"
+          >
             <div
               className="py-1"
               role="menu"
               aria-orientation="vertical"
-              aria-labelledby="options-menu"
+              aria-labelledby="mobile-menu-button"
             >
               <a
                 href="https://boarnergesresume.netlify.app"
-                className="block px-4 py-1 text-sm text-teal-400 hover:bg-gray-700"
+                className="block px-4 py-3 text-sm text-teal-400 hover:bg-gray-700"
                 role="menuitem"
                 target="_blank"
                 rel="noopener noreferrer"

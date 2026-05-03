@@ -1,35 +1,53 @@
 nav {
-  background: rgba(17, 24, 39, 0.5);
+  background: rgba(17, 24, 39, 0.72);
   width: max-content;
-  display: block;
-  padding: 0.7rem 1.7rem;
-  z-index: 2;
+  padding: 0.42rem;
+  z-index: 10;
   position: fixed;
   left: 50%;
-  transform: translate(-50%);
-  bottom: 2rem;
+  transform: translateX(-50%);
+  bottom: max(1rem, env(safe-area-inset-bottom));
   display: flex;
-  gap: 0.8rem;
-  border-radius: 3rem;
-  border: 1px solid rgba(45, 212, 191, 1);
+  gap: 0.28rem;
+  justify-content: space-between;
+  border-radius: 999px;
+  border: 1px solid rgba(45, 212, 191, 0.55);
   backdrop-filter: blur(15px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32);
 }
 
 nav a {
+  align-items: center;
   background: transparent;
-  padding: 0.9rem;
+  display: inline-flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  height: 2.45rem;
+  width: 2.45rem;
   border-radius: 50%;
-
   color: var(--color-lght);
-  font-size: 1.1rem;
+  font-size: 1rem;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 nav a:hover {
   background: rgba(45, 212, 191, 1);
+  color: var(--color-bg);
 }
 
 nav a.active {
   background: rgba(45, 212, 191, 1);
-
   color: var(--color-bg);
+  transform: scale(1.06);
+}
+
+@media screen and (max-width: 420px) {
+  nav {
+    padding: 0.36rem;
+  }
+
+  nav a {
+    height: 2.35rem;
+    width: 2.35rem;
+  }
 }

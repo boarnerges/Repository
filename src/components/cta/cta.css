@@ -1,0 +1,43 @@
+.cta-section {
+  min-height: 80svh;
+  padding-bottom: 7rem;
+  padding-top: 4rem;
+}
+
+.cta-title {
+  font-size: clamp(2.4rem, 10vw, 4.5rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.cta-copy {
+  line-height: 1.75;
+  max-width: 34rem;
+}
+
+.cta-section a {
+  min-height: 2.75rem;
+}
+
+.cta-button {
+  align-items: center;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .cta-section {
+    min-height: auto;
+    padding-bottom: 7.5rem;
+    padding-top: 2rem;
+  }
+
+  .cta-section > p:first-child {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+}

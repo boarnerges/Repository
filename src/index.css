@@ -26,6 +26,7 @@
   --color-primary: #0d9488;
   --color-primary-variant: #0d9488;
   --color-white: #ffff;
+  --color-light: rgba(255, 255, 255, 0.68);
   --color-lght: rgba(255, 255, 255, 0.6);
 
   --transition: all 400ms ease;
@@ -48,12 +49,13 @@ body {
   background: var(--color-bg);
   color: var(--color-white);
   line-height: 1.7;
+  min-width: 320px;
   /* background-image: url(); */
 }
 
 /* ============= GENERAL STYLES ===============*/
 .container {
-  width: var(--container-width-sm);
+  width: min(var(--container-width-lg), 1120px);
   margin: 0 auto;
 }
 
@@ -70,7 +72,8 @@ h1 {
 }
 
 section {
-  margin-top: 8rem;
+  margin-top: 7rem;
+  scroll-margin-top: 2rem;
 }
 
 section > h2,
@@ -128,7 +131,7 @@ img {
 /* ================= MEDIA QUERIES (MEDIUM DEVICES) =================*/
 @media screen and (max-width: 1024px) {
   .container {
-    width: var (--container-width-md);
+    width: var(--container-width-md);
   }
 
   section {
@@ -139,10 +142,18 @@ img {
 /* ================= MEDIA QUERIES (SMALL DEVICES) =================*/
 @media screen and (max-width: 600px) {
   .container {
-    width: var (--container-width-sm);
+    width: var(--container-width-sm);
   }
 
   section > h2 {
-    margin-bottom: 2 rem;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    margin-top: 4.5rem;
+  }
+
+  .btn {
+    min-height: 2.9rem;
   }
 }
