@@ -4,6 +4,7 @@ import { ExternalLink, Eye, X } from "lucide-react";
 import jobPortalPoster from "../../assets/job-portal.jpg";
 import adminDashboardPoster from "../../assets/admin-dashboard.jpg";
 import studentPlatformPoster from "../../assets/dice-game.jpg";
+import auraPoster from "../../assets/aura.png";
 
 const data = [
   {
@@ -39,6 +40,17 @@ const data = [
     palette: "sky",
     demo: "https://studmanagement.netlify.app/",
     poster: studentPlatformPoster,
+  },
+  {
+    id: 4,
+    title: "Aura",
+    description:
+      "This project appears to be a Next.js SaaS application that leverages Supabase for backend services and Clerk for authentication and user management. It features user profiles, a dashboard, and dynamic Open Graph image generation, functioning as a personalized link-sharing or profile management platform.",
+    tags: ["Next.js", "SaaS", "Supabase", "Clerk"],
+    metrics: [],
+    palette: "purple",
+    demo: "https://boarnerges-aura.netlify.app/",
+    poster: auraPoster,
   },
 ];
 
@@ -131,7 +143,6 @@ function Portfolio() {
                     <h3>{title}</h3>
                     <p>{description}</p>
                   </div>
-
                 </div>
 
                 <div className="portfolio__item-cta">
@@ -143,9 +154,18 @@ function Portfolio() {
                     <Eye size={16} strokeWidth={2.2} aria-hidden="true" />
                     <span>Preview</span>
                   </button>
-                  <a href={demo} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={demo}
+                    className="btn btn-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <span>Live Demo</span>
-                    <ExternalLink size={16} strokeWidth={2} aria-hidden="true" />
+                    <ExternalLink
+                      size={16}
+                      strokeWidth={2}
+                      aria-hidden="true"
+                    />
                   </a>
                 </div>
               </article>
