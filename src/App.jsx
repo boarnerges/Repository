@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import Nav from "./components/nav/Nav";
 import About from "./components/about/About";
-
 import Portfolio from "./components/portfolio/Portfolio";
-
 import Cta from "./components/cta/Cta";
 import Header from "./components/newheader/Header";
 
@@ -22,8 +20,8 @@ const App = () => {
 
   return (
     <>
-      <Header />
       <Nav />
+      <Header />
       <About />
       <Portfolio />
       <Cta />
