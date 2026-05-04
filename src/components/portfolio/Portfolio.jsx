@@ -45,7 +45,7 @@ const data = [
     id: 4,
     title: "Aura",
     description:
-      "This project appears to be a Next.js SaaS application that leverages Supabase for backend services and Clerk for authentication and user management. It features user profiles, a dashboard, and dynamic Open Graph image generation, functioning as a personalized link-sharing or profile management platform.",
+      "A Next.js SaaS application leveraging Supabase and Clerk for user management, featuring profiles, a dashboard, and dynamic Open Graph image generation.",
     tags: ["Next.js", "SaaS", "Supabase", "Clerk"],
     metrics: [],
     palette: "purple",
