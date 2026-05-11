@@ -12,13 +12,14 @@ const navItems = [
 
 const Nav = () => {
   return (
-    <nav className="bg-gray-900" aria-label="Primary navigation">
+    <nav aria-label="Primary navigation">
       {navItems.map((item) => {
         const Icon = item.Icon;
 
         return (
           <a key={item.href} href={item.href} aria-label={item.label}>
             <Icon />
+            <span>{item.label}</span>
           </a>
         );
       })}

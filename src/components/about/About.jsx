@@ -1,118 +1,63 @@
 import "./about.css";
 
-const skillGroups = [
+const proofPoints = [
   {
-    title: "Frontend",
-    items: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+    label: "Interface judgment",
+    value: "Turns messy flows into calm, scannable screens.",
   },
   {
-    title: "Interface Work",
-    items: ["Components", "Accessibility", "Responsive UI", "Figma"],
+    label: "Frontend craft",
+    value: "Builds responsive React UI with accessible interaction states.",
   },
   {
-    title: "App Patterns",
-    items: ["Custom Hooks", "State Management", "REST API", "Vite"],
+    label: "Delivery signal",
+    value: "Ships live projects recruiters can open, test, and compare.",
   },
+];
+
+const skills = [
+  "React",
+  "Next.js",
+  "Tailwind CSS",
+  "TypeScript",
+  "Vite",
+  "REST APIs",
+  "Accessibility",
+  "Responsive UI",
+  "Figma",
+  "State management",
+  "Design tokens",
+  "Performance",
 ];
 
 const About = () => {
   return (
     <section id="about" className="about-section">
-      <div className="mobile-about container">
-        <p>About</p>
-        <h2>I build responsive interfaces with modern frontend tools.</h2>
-        <div className="mobile-about__grid">
-          {skillGroups.map((group) => (
-            <article key={group.title} className="mobile-about__card">
-              <h3>{group.title}</h3>
-              <div>
-                {group.items.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
+      <div className="container about-layout">
+        <div className="about-copy">
+          <p className="section-kicker">Proof before personality</p>
+          <h2>Segun builds the parts of a product people actually touch.</h2>
+          <p>
+            The work is focused on interface quality: clear hierarchy, sturdy
+            responsive behavior, deliberate motion, and enough technical range
+            to move from prototype to production without losing polish.
+          </p>
+        </div>
+
+        <div className="about-proof" aria-label="Frontend proof points">
+          {proofPoints.map((point, index) => (
+            <article key={point.label} className="about-proof__item">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{point.label}</h3>
+              <p>{point.value}</p>
             </article>
           ))}
         </div>
-      </div>
 
-      <div className="scroll-container">
-        <div className="stuck-grid">
-          <div className="grid-item special">
-            <b>Frontend</b>
-          </div>
-          <div className="grid-item">Prop Drilling</div>
-          <div className="grid-item">Custom Hook</div>
-          <div className="grid-item">JAMstack</div>
-          <div className="grid-item">Server Components</div>
-          <div className="grid-item">Hydration</div>
-          <div className="grid-item special">
-            <b>React</b>
-          </div>
-
-          <div className="grid-item">JSX</div>
-          <div className="grid-item">Virtual DOM</div>
-          <div className="grid-item">Radix UI</div>
-          <div className="grid-item">Framer Motion</div>
-          <div className="grid-item">React Router</div>
-
-          <div className="grid-item special">
-            <b>Next.js</b>
-          </div>
-          <div className="grid-item">Prettier</div>
-          <div className="grid-item">Code Splitting</div>
-          <div className="grid-item">Lazy Loading</div>
-
-          <div className="grid-item special">
-            <b>Tailwind CSS</b>
-          </div>
-          <div className="grid-item special">
-            <b>TypeScript</b>
-          </div>
-          <div className="grid-item">Webpack</div>
-          <div className="grid-item">Vite</div>
-          <div className="grid-item">Babel</div>
-          <div className="grid-item special">
-            <b>REST API</b>
-          </div>
-          <div className="grid-item">GraphQL</div>
-          <div className="grid-item special">
-            <b>Component</b>
-          </div>
-          <div className="grid-item">State Management</div>
-          <div className="grid-item">useEffect()</div>
-          <div className="grid-item special">
-            <b>Context API</b>
-          </div>
-          <div className="grid-item">Zustand</div>
-          <div className="grid-item">Redux</div>
-          <div className="grid-item">SSR</div>
-          <div className="grid-item">CSR</div>
-          <div className="grid-item">ISR</div>
-          <div className="grid-item special">
-            <b>Atomic Design</b>
-          </div>
-          <div className="grid-item">CSS-in-JS</div>
-          <div className="grid-item">Styled Components</div>
-          <div className="grid-item">Emotion</div>
-          <div className="grid-item">PostCSS</div>
-          <div className="grid-item">SCSS</div>
-          <div className="grid-item special">
-            <b>Accessibility</b>
-          </div>
-          <div className="grid-item">ARIA</div>
-          <div className="grid-item">Figma</div>
-          <div className="grid-item">Design Tokens</div>
-          <div className="grid-item special">
-            <b>UI Library</b>
-          </div>
-          <div className="grid-item">ShadCN/UI</div>
-          <div className="grid-item">React Query</div>
-          <div className="grid-item">TanStack Table</div>
-          <div className="grid-item special">
-            <b>Fetch API</b>
-          </div>
-          <div className="grid-item">Axios</div>
-          <div className="grid-item">ESLint</div>
+        <div className="skill-cloud" aria-label="Frontend skills">
+          {skills.map((skill) => (
+            <span key={skill}>{skill}</span>
+          ))}
         </div>
       </div>
     </section>
