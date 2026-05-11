@@ -9,25 +9,21 @@ const Cta = () => {
   return (
     <div
       id="cta"
-      className="cta-section container flex flex-col max-w-2xl mx-auto justify-center items-center"
+      className="cta-section container"
     >
-      <p className="text-teal-400">02. What's Next?</p>
-      <h2 className="cta-title font-bold text-gray-400 py-4 animate-fade-in-up">
-        Get In Touch
-      </h2>
-      <p className="cta-copy text-center mb-4 text-gray-300">
-        My inbox is always open, whether you have a question or just want to say
-        hi, I'll try my best to get back to you!
+      <p className="section-kicker">Next step</p>
+      <h2 className="cta-title">Need a frontend engineer who cares about the last 10%?</h2>
+      <p className="cta-copy">
+        Send the role, product, or problem. I will reply with context, fit, and
+        the fastest way to evaluate the work.
       </p>
 
-      {/* Social Media Links */}
-      <div className="flex space-x-4 mt-6">
+      <div className="cta-socials" aria-label="Social links">
         <a
           href="https://github.com/boarnerges"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Open GitHub profile"
-          className="text-gray-400 hover:text-teal-400 transition-colors"
         >
           <FaGithub className="text-2xl" />
         </a>
@@ -36,7 +32,6 @@ const Cta = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Open X profile"
-          className="text-gray-400 hover:text-teal-400 transition-colors"
         >
           <FaTwitter className="text-2xl" />
         </a>
@@ -45,7 +40,6 @@ const Cta = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Open Instagram profile"
-          className="text-gray-400 hover:text-teal-400 transition-colors"
         >
           <FaInstagram className="text-2xl" />
         </a>
@@ -54,7 +48,6 @@ const Cta = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Open LinkedIn profile"
-          className="text-gray-400 hover:text-teal-400 transition-colors"
         >
           <FaLinkedin className="text-2xl" />
         </a>
@@ -63,7 +56,6 @@ const Cta = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Send an email"
-          className="text-gray-400 hover:text-teal-400 transition-colors"
         >
           <MdEmail className="text-2xl" />
         </a>
@@ -73,9 +65,9 @@ const Cta = () => {
         href={emailComposeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="cta-button border border-teal-400 text-teal-400 px-6 py-3 mt-10 w-fit cursor-pointer fadeInUp-animation hover:bg-teal-400/10 transition-colors"
+        className="cta-button"
       >
-        Say Hello
+        Email Segun
       </a>
     </div>
   );
