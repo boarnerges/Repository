@@ -1,49 +1,52 @@
 nav {
-  background: rgba(17, 24, 39, 0.72);
-  width: max-content;
-  padding: 0.42rem;
-  z-index: 10;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
+  background: var(--color-bg-deep);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
   bottom: max(1rem, env(safe-area-inset-bottom));
+  box-shadow: 0 18px 50px oklch(7% 0.02 243 / 0.42);
   display: flex;
   gap: 0.28rem;
   justify-content: space-between;
-  border-radius: 999px;
-  border: 1px solid rgba(45, 212, 191, 0.55);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32);
+  left: 50%;
+  padding: 0.38rem;
+  position: fixed;
+  transform: translateX(-50%);
+  width: max-content;
+  z-index: 10;
 }
 
 nav a {
   align-items: center;
-  background: transparent;
+  border-radius: 999px;
+  color: var(--color-soft);
   display: inline-flex;
   flex: 0 0 auto;
-  justify-content: center;
-  height: 2.45rem;
-  width: 2.45rem;
-  border-radius: 50%;
-  color: var(--color-lght);
   font-size: 1rem;
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  height: 2.55rem;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  width: 2.55rem;
 }
 
-nav a:hover {
-  background: rgba(45, 212, 191, 1);
-  color: var(--color-bg);
+nav a:hover,
+nav a:focus-visible {
+  background: var(--color-primary);
+  color: var(--color-bg-deep);
+  transform: translateY(-2px);
+}
+
+nav a:active {
+  transform: translateY(0);
 }
 
 nav a.active {
-  background: rgba(45, 212, 191, 1);
-  color: var(--color-bg);
-  transform: scale(1.06);
+  background: var(--color-primary);
+  color: var(--color-bg-deep);
 }
 
 @media screen and (max-width: 420px) {
   nav {
-    padding: 0.36rem;
+    padding: 0.32rem;
   }
 
   nav a {
