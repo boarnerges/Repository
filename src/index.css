@@ -20,6 +20,9 @@
   --color-ember: oklch(75% 0.18 58);
   --color-violet: oklch(70% 0.17 294);
   --color-line: oklch(38% 0.05 224 / 0.5);
+  --page-background:
+    radial-gradient(circle at 78% 8%, oklch(43% 0.12 157 / 0.24), transparent 24rem),
+    linear-gradient(150deg, var(--color-bg-deep) 0%, var(--color-bg) 48%, oklch(18% 0.035 275) 100%);
   --shadow-lift: 0 26px 70px oklch(7% 0.02 243 / 0.52);
   --transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -30,7 +33,7 @@
 }
 
 html {
-  background: var(--color-bg-deep);
+  background: var(--page-background);
   scroll-behavior: smooth;
 }
 
@@ -39,9 +42,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(circle at 78% 8%, oklch(43% 0.12 157 / 0.24), transparent 24rem),
-    linear-gradient(150deg, var(--color-bg-deep) 0%, var(--color-bg) 48%, oklch(18% 0.035 275) 100%);
+  background: var(--page-background);
   color: var(--color-ink);
   font-family: "Manrope", system-ui, sans-serif;
   line-height: 1.65;
