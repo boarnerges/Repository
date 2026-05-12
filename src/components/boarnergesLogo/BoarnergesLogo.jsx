@@ -22,9 +22,6 @@ export default function BoarnergesLogo() {
               style={{ "--letter-index": index }}
             >
               {char}
-              {index === 0 && (
-                <span className="brand-underline"></span>
-              )}
             </span>
           ))}
         </p>
