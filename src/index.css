@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 
 * {
@@ -7,36 +7,33 @@
   text-decoration: none;
 }
 
-.animation-delay-0 {
-  animation-delay: 0ms;
-}
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-.animation-delay-400 {
-  animation-delay: 400ms;
-}
-.animation-delay-600 {
-  animation-delay: 600ms;
-}
-
 :root {
-  --color-bg: #111827;
-  --color-bg-variant: #134e4a;
-  --color-primary: #0d9488;
-  --color-primary-variant: #0d9488;
-  --color-white: #ffff;
-  --color-light: rgba(255, 255, 255, 0.68);
-  --color-lght: rgba(255, 255, 255, 0.6);
-
-  --transition: all 400ms ease;
-
-  --container-width-lg: 75%;
-  --container-width-md: 86%;
-  --container-width-sm: 90%;
+  --color-bg: oklch(16% 0.018 243);
+  --color-bg-deep: oklch(11% 0.018 243);
+  --color-panel: oklch(21% 0.022 235);
+  --color-panel-strong: oklch(25% 0.034 217);
+  --color-ink: oklch(94% 0.012 82);
+  --color-muted: oklch(76% 0.026 226);
+  --color-soft: oklch(63% 0.035 226);
+  --color-primary: oklch(75% 0.18 156);
+  --color-primary-strong: oklch(66% 0.19 156);
+  --color-ember: oklch(75% 0.18 58);
+  --color-violet: oklch(70% 0.17 294);
+  --color-line: oklch(38% 0.05 224 / 0.5);
+  --page-background:
+    radial-gradient(circle at 78% 8%, oklch(43% 0.12 157 / 0.24), transparent 24rem),
+    linear-gradient(150deg, var(--color-bg-deep) 0%, var(--color-bg) 48%, oklch(18% 0.035 275) 100%);
+  --shadow-lift: 0 26px 70px oklch(7% 0.02 243 / 0.52);
+  --transition: 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --container-width-lg: 82%;
+  --container-width-md: 88%;
+  --container-width-sm: 91%;
 }
 
 html {
+  background: var(--page-background);
   scroll-behavior: smooth;
 }
 
@@ -45,173 +42,209 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background: var(--color-bg);
-  color: var(--color-white);
-  line-height: 1.7;
+  background: var(--page-background);
+  color: var(--color-ink);
+  font-family: "Manrope", system-ui, sans-serif;
+  line-height: 1.65;
   min-width: 320px;
-  /* background-image: url(); */
+  overflow-x: hidden;
 }
 
-/* ============= GENERAL STYLES ===============*/
+body::before {
+  background-image:
+    linear-gradient(oklch(92% 0.01 82 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(92% 0.01 82 / 0.03) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  content: "";
+  inset: 0;
+  mask-image: linear-gradient(to bottom, oklch(0% 0 0), transparent 68%);
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
 .container {
-  width: min(var(--container-width-lg), 1120px);
-  margin: 0 auto;
-}
-
-/* h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 500;
-} */
-
-h1 {
-  font-size: 2.5rem;
+  margin-inline: auto;
+  width: min(var(--container-width-lg), 1180px);
 }
 
 section {
-  margin-top: 7rem;
+  margin-top: clamp(5.5rem, 9vw, 9rem);
   scroll-margin-top: 2rem;
 }
 
-section > h2,
-section > h5 {
-  text-align: center;
-  color: var(--color-light);
+h1,
+h2,
+h3 {
+  color: var(--color-ink);
+  font-family: "Sora", "Manrope", system-ui, sans-serif;
+  letter-spacing: 0;
 }
 
-section > h2 {
-  color: var(--color-primary);
-  margin-bottom: 3rem;
-}
-
-.text-light {
-  color: var(--color-light);
+a,
+button {
+  font: inherit;
 }
 
 a {
-  color: var(--color-primary);
-  transition: var(--transition);
+  color: inherit;
+  transition: color var(--transition), background var(--transition), border-color var(--transition), transform var(--transition);
 }
 
-a:hover {
-  color: var(--color-white);
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 3px;
 }
 
-.btn {
-  width: max-content;
-  display: inline-block;
-  color: var(--color-primary);
-  padding: 0.75rem 1.2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  border: 1px solid var(--color-primary);
-  transition: var(--transition);
-}
-
-.btn:hover {
-  background: var(--color-white);
-  color: var(--color-bg);
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-bg);
+button {
+  color: inherit;
 }
 
 img {
   display: block;
-  width: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
-@keyframes brandSignBounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+.section-kicker {
+  color: var(--color-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin: 0 0 0.85rem;
+  text-transform: uppercase;
 }
 
-@keyframes brandSignGlow {
-  0%,
-  100% {
-    text-shadow: 0 0 0 rgba(13, 148, 136, 0);
-  }
-  50% {
-    text-shadow: 0 0 10px rgba(45, 212, 191, 0.5);
-  }
+.btn {
+  align-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.45rem;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg-deep);
+  font-weight: 800;
+}
+
+.btn-primary:hover {
+  background: var(--color-ember);
+  border-color: var(--color-ember);
 }
 
 @keyframes brandLetterWave {
   0% {
     transform: translateY(0);
   }
-  30% {
-    transform: translateY(-5px);
-  }
-  60% {
-    transform: translateY(1px);
+  35% {
+    transform: translateY(-4px);
   }
   100% {
     transform: translateY(0);
   }
 }
 
-.brand-code--bounce {
-  animation: brandSignBounce 1.8s ease-in-out infinite, brandSignGlow 2.8s ease-in-out infinite;
-}
-
-.brand-letter {
-  animation: brandLetterWave 620ms ease-out 1;
-}
-
-.brand-mark:hover .brand-code--bounce {
-  animation-duration: 1.15s, 1.55s;
-}
-
-.brand-mark:hover .brand-letter {
-  color: #cbd5e1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .brand-code--bounce,
-  .brand-letter {
-    animation: none;
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* ================= MEDIA QUERIES (MEDIUM DEVICES) =================*/
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes line-scan {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cue-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(75% 0.18 156 / 0);
+  }
+  50% {
+    box-shadow: 0 0 0 6px oklch(75% 0.18 156 / 0.14);
+  }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 620ms var(--ease-out-expo) var(--reveal-delay, 0ms),
+    transform 620ms var(--ease-out-expo) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     width: var(--container-width-md);
   }
-
-  section {
-    margin-top: 6rem;
-  }
 }
 
-/* ================= MEDIA QUERIES (SMALL DEVICES) =================*/
 @media screen and (max-width: 600px) {
   .container {
     width: var(--container-width-sm);
   }
 
-  section > h2 {
-    margin-bottom: 2rem;
-  }
-
   section {
     margin-top: 4.5rem;
-  }
-
-  .btn {
-    min-height: 2.9rem;
   }
 }

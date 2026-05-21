@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Boarnerges">
+  <rect width="64" height="64" rx="14" fill="#061013"/>
+  <path d="M17 15h18c8 0 13 4.1 13 10.6 0 4-2.2 7-6.1 8.5 4.9 1.4 7.6 4.9 7.6 9.7 0 7.6-5.8 12.2-15.2 12.2H17V15Zm16.7 16.2c4.1 0 6.4-1.7 6.4-4.8 0-3-2.3-4.7-6.4-4.7h-8.4v9.5h8.4Zm.8 18.1c4.6 0 7.1-1.9 7.1-5.4s-2.5-5.4-7.1-5.4h-9.2v10.8h9.2Z" fill="#18d083"/>
+  <path d="M45.4 16.8 38.7 47" fill="none" stroke="#ff9100" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

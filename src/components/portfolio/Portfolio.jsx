@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./portfolio.css";
-import { ExternalLink, Eye, X } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Eye, X } from "lucide-react";
 import jobPortalPoster from "../../assets/job-portal.jpg";
 import adminDashboardPoster from "../../assets/admin-dashboard.jpg";
 import studentPlatformPoster from "../../assets/dice-game.jpg";
@@ -57,7 +57,6 @@ const data = [
 function Portfolio() {
   const [activeProject, setActiveProject] = useState(null);
   const [previewLoaded, setPreviewLoaded] = useState(false);
-  const [cardPreviewLoaded, setCardPreviewLoaded] = useState({});
 
   const openPreview = (project) => {
     setPreviewLoaded(false);
@@ -90,21 +89,27 @@ function Portfolio() {
   return (
     <section id="portfolio" className="portfolio">
       <div className="container">
-        <div className="portfolio__header">
-          <p>Selected Work</p>
-          <div className="portfolio__heading-row">
-            <h2>
-              <span>01.</span> Some Things I Have Built
-            </h2>
-            <div aria-hidden="true" />
+        <div className="portfolio__header" data-reveal>
+          <p className="section-kicker">Selected work</p>
+          <div>
+            <h2>Four builds, one throughline: usable screens that ship.</h2>
+            <a href="#cta">
+              <span>Start a conversation</span>
+              <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden="true" />
+            </a>
           </div>
         </div>
 
         <div className="portfolio__container">
-          {data.map((project) => {
-            const { id, title, description, palette, demo, poster } = project;
+          {data.map((project, index) => {
+            const { id, title, description, palette, demo, poster, tags, metrics } = project;
             return (
-              <article key={id} className="portfolio__item">
+              <article
+                key={id}
+                className={`portfolio__item ${index === 0 ? "portfolio__item--featured" : ""}`}
+                data-reveal
+                style={{ "--reveal-delay": `${Math.min(index, 3) * 80}ms` }}
+              >
                 <button
                   type="button"
                   className={`portfolio__item-visual palette-${palette}`}
@@ -118,23 +123,10 @@ function Portfolio() {
                       className="portfolio__visual-poster"
                       loading="lazy"
                     />
-                    {!cardPreviewLoaded[id] && (
-                      <div className="portfolio__visual-loading">
-                        <span>Loading preview...</span>
-                      </div>
-                    )}
-                    <iframe
-                      title={`${title} card preview`}
-                      src={demo}
-                      loading="lazy"
-                      className={`portfolio__visual-live ${cardPreviewLoaded[id] ? "is-ready" : ""}`}
-                      onLoad={() =>
-                        setCardPreviewLoaded((prev) => ({
-                          ...prev,
-                          [id]: true,
-                        }))
-                      }
-                    />
+                    <span className="portfolio__visual-cue">
+                      <Eye size={15} strokeWidth={2.2} aria-hidden="true" />
+                      Preview site
+                    </span>
                   </div>
                 </button>
 
@@ -143,17 +135,21 @@ function Portfolio() {
                     <h3>{title}</h3>
                     <p>{description}</p>
                   </div>
+                  <div className="portfolio__tags" aria-label={`${title} technologies`}>
+                    {tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  {metrics.length > 0 && (
+                    <div className="portfolio__signals" aria-label={`${title} project signals`}>
+                      {metrics.map((metric) => (
+                        <span key={metric}>{metric}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <div className="portfolio__item-cta">
-                  <button
-                    type="button"
-                    className="btn btn-ghost"
-                    onClick={() => openPreview(project)}
-                  >
-                    <Eye size={16} strokeWidth={2.2} aria-hidden="true" />
-                    <span>Preview</span>
-                  </button>
                   <a
                     href={demo}
                     className="btn btn-primary"
