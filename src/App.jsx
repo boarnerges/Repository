@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import Nav from "./components/nav/Nav";
 import About from "./components/about/About";
+import Experience from "./components/experience/Experience";
 import Portfolio from "./components/portfolio/Portfolio";
+import AiAutomation from "./components/ai-automation/AiAutomation";
+import Process from "./components/process/Process";
 import Cta from "./components/cta/Cta";
 import Header from "./components/newheader/Header";
 
@@ -55,7 +58,10 @@ const App = () => {
       <Nav />
       <Header />
       <About />
+      <Experience />
       <Portfolio />
+      <AiAutomation />
+      <Process />
       <Cta />
     </>
   );

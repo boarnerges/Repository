@@ -10,46 +10,54 @@ const data = [
   {
     id: 1,
     title: "Job Portal",
-    description:
-      "A job search experience with a clean listing flow, responsive pages, and focused calls to action.",
-    tags: ["React", "Vite", "Responsive UI"],
-    metrics: ["120+ Roles", "3.2s Apply Flow", "95 Lighthouse"],
+    description: "Streamlined job discovery and application processes for users. Built a responsive platform with React and Vite, focusing on dynamic UI and efficient workflows.",
+    role: "Solo Engineer",
+    stack: ["React", "Vite", "Responsive UI"],
+    impact: "Improved user engagement with 120+ roles listed, 3.2s application flow.",
+    isAI: false,
     palette: "teal",
     demo: "https://boarnergesjob.netlify.app/",
+    github: "https://github.com/boarnerges/job-portal",
     poster: jobPortalPoster,
   },
 
   {
     id: 2,
     title: "Admin Dashboard",
-    description:
-      "A responsive admin interface for scanning key metrics, managing records, and moving through operational views quickly.",
-    tags: ["Dashboard", "React", "Tailwind"],
-    metrics: ["42 Widgets", "24/7 Monitoring", "4 KPI Panels"],
+    description: "Provided a centralized system for monitoring key metrics and managing operational records. Developed a responsive admin interface using React and Tailwind CSS.",
+    role: "Solo Engineer",
+    stack: ["Dashboard", "React", "Tailwind"],
+    impact: "Enabled 24/7 monitoring with 42 widgets and 4 KPI panels.",
+    isAI: false,
     palette: "amber",
     demo: "https://boarnergesdashboard.netlify.app/",
+    github: "https://github.com/boarnerges/admin-dashboard",
     poster: adminDashboardPoster,
   },
   {
     id: 3,
     title: "Student Management Platform",
-    description:
-      "A comprehensive solution for managing student information, tracking academic progress, and facilitating communication between stakeholders.",
-    tags: ["Management", "React", "Tailwind"],
-    metrics: ["2k Students", "87% Completion", "Realtime Notices"],
+    description: "Addressed inefficient processes for managing student information and academic progress. Built a comprehensive solution with React and Tailwind for data tracking and notifications.",
+    role: "Solo Engineer",
+    stack: ["Management", "React", "Tailwind"],
+    impact: "Successfully managed 2k students, 87% completion rates, real-time notices.",
+    isAI: false,
     palette: "sky",
     demo: "https://studmanagement.netlify.app/",
+    github: "https://github.com/boarnerges/student-management-platform",
     poster: studentPlatformPoster,
   },
   {
     id: 4,
     title: "Aura",
-    description:
-      "A Next.js SaaS application leveraging Supabase and Clerk for user management, featuring profiles, a dashboard, and dynamic Open Graph image generation.",
-    tags: ["Next.js", "SaaS", "Supabase", "Clerk"],
-    metrics: [],
+    description: "Created a scalable SaaS application with robust user management and dynamic content generation. Developed with Next.js, Supabase, and Clerk, including Open Graph image generation.",
+    role: "Solo Engineer",
+    stack: ["Next.js", "SaaS", "Supabase", "Clerk"],
+    impact: "Functional SaaS platform with secure user profiles and automated OG image generation.",
+    isAI: false, // Assuming not an AI project, but could be if OG generation uses AI
     palette: "purple",
     demo: "https://boarnerges-aura.netlify.app/",
+    github: "https://github.com/boarnerges/aura",
     poster: auraPoster,
   },
 ];
@@ -92,7 +100,7 @@ function Portfolio() {
         <div className="portfolio__header" data-reveal>
           <p className="section-kicker">Selected work</p>
           <div>
-            <h2>Four builds, one throughline: usable screens that ship.</h2>
+            <h2>Deployments: Architecting for impact and scale.</h2>
             <a href="#cta">
               <span>Start a conversation</span>
               <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden="true" />
@@ -102,7 +110,11 @@ function Portfolio() {
 
         <div className="portfolio__container">
           {data.map((project, index) => {
-            const { id, title, description, palette, demo, poster, tags, metrics } = project;
+            const { id, title, role, description, impact, stack, isAI, palette, demo, github, poster } = project;
+            
+            // Apply metric bolding
+            const boldedImpact = impact.replace(/(\d+%|\d+\.\d+s|\d+k|\d+\+)/g, "<strong>$1</strong>");
+
             return (
               <article
                 key={id}
@@ -131,22 +143,23 @@ function Portfolio() {
                 </button>
 
                 <div className="portfolio__item-body">
+                  <div className="portfolio__item-badges">
+                    <span className="portfolio__item-role">{role}</span>
+                    {isAI && <span className="portfolio__item-badge-ai">AI</span>}
+                  </div>
                   <div>
                     <h3>{title}</h3>
-                    <p>{description}</p>
+                    <p className="portfolio__item-description">{description}</p>
+                    <p 
+                      className="portfolio__item-impact"
+                      dangerouslySetInnerHTML={{ __html: `Impact: ${boldedImpact}` }}
+                    />
                   </div>
                   <div className="portfolio__tags" aria-label={`${title} technologies`}>
-                    {tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
+                    {stack.map((tech) => (
+                      <span key={tech}>{tech}</span>
                     ))}
                   </div>
-                  {metrics.length > 0 && (
-                    <div className="portfolio__signals" aria-label={`${title} project signals`}>
-                      {metrics.map((metric) => (
-                        <span key={metric}>{metric}</span>
-                      ))}
-                    </div>
-                  )}
                 </div>
 
                 <div className="portfolio__item-cta">
@@ -163,6 +176,21 @@ function Portfolio() {
                       aria-hidden="true"
                     />
                   </a>
+                  {github && (
+                    <a
+                      href={github}
+                      className="btn btn-secondary"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>GitHub</span>
+                      <ExternalLink
+                        size={16}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                    </a>
+                  )}
                 </div>
               </article>
             );

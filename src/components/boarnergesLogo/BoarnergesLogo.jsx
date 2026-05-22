@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { FileText, Menu } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FileText, Menu, X } from "lucide-react";
 
 export default function BoarnergesLogo() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,17 +15,25 @@ export default function BoarnergesLogo() {
   return (
     <div className="site-brand container">
       <div className="brand-mark">
-        <p className="brand-wordmark" aria-label="Boarnerges">
+        <motion.p 
+          className="brand-wordmark" 
+          aria-label="Boarnerges"
+          whileHover="hover"
+        >
           {characters.map((char, index) => (
-            <span
+            <motion.span
               key={index}
+              variants={{
+                hover: { y: -2 }
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
               className={index === 0 ? "brand-letter--first" : ""}
               style={{ "--letter-index": index }}
             >
               {char}
-            </span>
+            </motion.span>
           ))}
-        </p>
+        </motion.p>
         <span className="brand-code" aria-hidden="true">
           &lt;/&gt;
         </span>
@@ -52,32 +61,38 @@ export default function BoarnergesLogo() {
           aria-expanded={menuOpen}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          <Menu size={24} />
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {menuOpen && (
-          <div
-            id="mobile-resume-menu"
-            className="mobile-resume__menu"
-          >
-            <div
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="mobile-menu-button"
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              id="mobile-resume-menu"
+              className="mobile-resume__menu"
+              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             >
-              <a
-                href="https://boarnergesresume.netlify.app"
-                className="mobile-resume__link"
-                role="menuitem"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMenuOpen(false)}
+              <div
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="mobile-menu-button"
               >
-                Resume
-              </a>
-            </div>
-          </div>
-        )}
+                <a
+                  href="https://boarnergesresume.netlify.app"
+                  className="mobile-resume__link"
+                  role="menuitem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Resume
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

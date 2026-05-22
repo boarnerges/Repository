@@ -1,7 +1,8 @@
 .site-header {
-  min-height: 100svh;
+  min-height: 100svh; /* Reverted to min-height: 100svh */
   padding: clamp(1.1rem, 2vw, 1.6rem) 0 clamp(4rem, 8vw, 7rem);
   position: relative;
+  transition: background 600ms ease-in-out;
 }
 
 .site-header::after {
@@ -71,12 +72,25 @@
 
 .brand-code {
   color: var(--color-primary);
-  font-family: "Sora", "Manrope", system-ui, sans-serif;
-  font-size: clamp(1.25rem, 3.3vw, 1.8rem);
+  font-family: var(--font-mono, monospace);
+  font-size: clamp(1rem, 2.8vw, 1.4rem);
   font-weight: 800;
   line-height: 0.85;
-  padding-top: 0.13em;
+  padding-top: 0.2em;
   transition: color var(--transition), transform var(--transition);
+}
+
+.brand-letter--first::after {
+  display: none !important;
+}
+
+.brand-mark {
+  align-items: center;
+  border-bottom: 2px solid var(--color-primary);
+  display: flex;
+  gap: clamp(0.6rem, 1.3vw, 0.95rem);
+  min-width: 0;
+  padding-bottom: 0.15rem;
 }
 
 .brand-mark:hover .brand-wordmark span {
@@ -204,65 +218,88 @@
 }
 
 .hero-content {
-  padding-top: clamp(5rem, 11vw, 8rem);
+  padding-top: clamp(3.2rem, 8vw, 5.2rem);
 }
 
-.hero-kicker {
-  animation: rise-in 520ms var(--ease-out-expo) 70ms both;
+.hero-focus-mode {
+  margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.hero-focus-status {
   align-items: center;
-  color: var(--color-soft);
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.45rem;
+}
+
+.status-dot {
+  background: var(--color-primary);
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+
+.status-text {
+  color: var(--color-primary);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.hero-badges {
   display: flex;
   flex-wrap: wrap;
-  font-size: 0.78rem;
-  font-weight: 800;
   gap: 0.6rem;
-  letter-spacing: 0.12em;
-  margin-bottom: clamp(1.6rem, 4vw, 2.4rem);
-  text-transform: uppercase;
+  max-width: fit-content;
 }
 
-.hero-kicker span {
+.hero-badge {
   border: 1px solid var(--color-line);
   border-radius: 999px;
-  padding: 0.45rem 0.7rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-soft);
+  transition: all 400ms var(--ease-out-expo);
 }
 
-.hero-kicker span:first-child {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: var(--color-bg-deep);
+.hero-badge--active {
+  box-shadow: 0 0 15px oklch(75% 0.18 156 / 0.15);
 }
 
 .hero-grid {
   align-items: center;
   display: grid;
   gap: clamp(2rem, 6vw, 5rem);
-  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-}
-
-.hero-copy-block {
-  max-width: 58rem;
+  grid-template-columns: 1fr;
 }
 
 .hero-intro {
-  animation: rise-in 520ms var(--ease-out-expo) 120ms both;
   color: var(--color-ember);
-  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
   font-weight: 800;
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.hero-title span {
+  color: var(--focus-color);
+  transition: color 400ms var(--ease-out-expo);
 }
 
 .hero-copy-block h1 {
-  animation: rise-in 620ms var(--ease-out-expo) 170ms both;
-  font-size: clamp(3.15rem, 8vw, 6rem);
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
   font-weight: 800;
-  line-height: 0.96;
+  line-height: 1.1;
   margin: 0;
-  max-width: 17ch;
+  max-width: 18ch;
 }
 
 .hero-copy {
-  animation: rise-in 560ms var(--ease-out-expo) 240ms both;
   color: var(--color-muted);
   font-size: clamp(1.04rem, 2vw, 1.22rem);
   line-height: 1.75;
@@ -447,8 +484,14 @@
     line-height: 1;
   }
 
+  .hero-badge {
+    min-height: 44px;
+    padding: 0.65rem 1.15rem;
+  }
+
   .hero-actions,
   .hero-button {
+
     width: 100%;
   }
 
