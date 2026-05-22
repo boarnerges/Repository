@@ -37,6 +37,7 @@ export default function BoarnergesLogo() {
         <span className="brand-code" aria-hidden="true">
           &lt;/&gt;
         </span>
+        <div className="brand-anchor" aria-hidden="true" />
       </div>
 
       {/* Desktop view */}

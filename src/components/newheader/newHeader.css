@@ -86,11 +86,18 @@
 
 .brand-mark {
   align-items: center;
-  border-bottom: 2px solid var(--color-primary);
   display: flex;
-  gap: clamp(0.6rem, 1.3vw, 0.95rem);
+  gap: clamp(0.6rem, 1.3vw, 1.2rem);
   min-width: 0;
-  padding-bottom: 0.15rem;
+}
+
+.brand-anchor {
+  background: var(--color-primary);
+  border-radius: 1px;
+  height: 6px;
+  width: 6px;
+  margin-top: 0.2rem;
+  box-shadow: 0 0 8px var(--color-primary);
 }
 
 .brand-mark:hover .brand-wordmark span {
