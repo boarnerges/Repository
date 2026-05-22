@@ -23,11 +23,10 @@
 .site-brand {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   min-height: 3.6rem;
   position: relative;
   z-index: 3;
-  animation: rise-in 520ms var(--ease-out-expo) both;
 }
 
 .brand-mark {
@@ -110,119 +109,7 @@
   transform: translateX(3px) rotate(-6deg);
 }
 
-.resume-link {
-  align-items: center;
-  background: oklch(75% 0.18 156 / 0.05);
-  border: 1px solid oklch(75% 0.18 156 / 0.28);
-  border-radius: 8px;
-  color: var(--color-ink);
-  display: inline-flex;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 800;
-  min-height: 2.75rem;
-  overflow: hidden;
-  padding: 0 1rem;
-  position: relative;
-  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition), color var(--transition), transform var(--transition);
-}
 
-.resume-link::before {
-  background: linear-gradient(120deg, transparent 0%, oklch(94% 0.012 82 / 0.22) 45%, transparent 70%);
-  content: "";
-  inset: -60% auto -60% -45%;
-  position: absolute;
-  transform: translateX(-120%) rotate(18deg);
-  transition: transform 520ms var(--ease-out-expo);
-  width: 65%;
-}
-
-.resume-link span,
-.resume-link svg {
-  position: relative;
-  z-index: 1;
-}
-
-.resume-link svg {
-  transition: transform var(--transition);
-}
-
-.resume-link:hover,
-.resume-link:focus-visible {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  box-shadow: 0 18px 38px oklch(75% 0.18 156 / 0.2);
-  color: var(--color-bg-deep);
-  transform: translateY(-2px);
-}
-
-.resume-link:hover::before,
-.resume-link:focus-visible::before {
-  transform: translateX(260%) rotate(18deg);
-}
-
-.resume-link:hover svg,
-.resume-link:focus-visible svg {
-  transform: translateY(-1px) rotate(-7deg);
-}
-
-.resume-link:active {
-  box-shadow: none;
-  transform: translateY(0);
-}
-
-.mobile-resume {
-  display: none;
-  position: relative;
-}
-
-.mobile-resume__button {
-  align-items: center;
-  background: transparent;
-  border: 1px solid var(--color-line);
-  border-radius: 8px;
-  color: var(--color-primary);
-  cursor: pointer;
-  display: inline-flex;
-  height: 2.65rem;
-  justify-content: center;
-  padding: 0;
-  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
-  width: 2.65rem;
-}
-
-.mobile-resume__button:hover,
-.mobile-resume__button:focus-visible {
-  background: oklch(75% 0.18 156 / 0.12);
-  border-color: oklch(75% 0.18 156 / 0.5);
-  color: var(--color-ink);
-}
-
-.mobile-resume__menu {
-  background: var(--color-panel);
-  border: 1px solid var(--color-line);
-  border-radius: 8px;
-  box-shadow: var(--shadow-lift);
-  animation: panel-in 220ms var(--ease-out-quint) both;
-  padding: 0.4rem;
-  position: absolute;
-  right: 0;
-  top: calc(100% + 0.5rem);
-  width: 11rem;
-}
-
-.mobile-resume__link {
-  border-radius: 7px;
-  color: var(--color-ink);
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 800;
-  padding: 0.75rem 0.85rem;
-}
-
-.mobile-resume__link:hover {
-  background: oklch(75% 0.18 156 / 0.12);
-}
 
 .hero-content {
   padding-top: clamp(3.2rem, 8vw, 5.2rem);
