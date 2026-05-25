@@ -1,3 +1,5 @@
+import { motion, AnimatePresence } from "motion/react";
+
 export default function BoarnergesLogo() {
   const text = "Boarnerges";
   const characters = text.split("");

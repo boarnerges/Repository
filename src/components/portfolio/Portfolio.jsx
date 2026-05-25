@@ -8,57 +8,65 @@ import auraPoster from "../../assets/aura.png";
 
 const data = [
   {
-    id: 1,
-    title: "Job Portal",
-    description: "Streamlined job discovery and application processes for users. Built a responsive platform with React and Vite, focusing on dynamic UI and efficient workflows.",
+    id: 4,
+    title: "Aura",
+    description:
+      "Created a scalable SaaS application with robust user management and dynamic content generation. Developed with Next.js, Supabase, and Clerk, including Open Graph image generation.",
     role: "Solo Engineer",
-    stack: ["React", "Vite", "Responsive UI"],
-    impact: "Improved user engagement with 120+ roles listed, 3.2s application flow.",
-    isAI: false,
-    palette: "teal",
-    demo: "https://boarnergesjob.netlify.app/",
-    github: "https://github.com/boarnerges/job-portal",
-    poster: jobPortalPoster,
+    stack: ["Next.js", "SaaS", "Supabase", "Clerk"],
+    impact:
+      "Functional SaaS platform with secure user profiles and automated OG image generation.",
+    isAI: false, // Assuming not an AI project, but could be if OG generation uses AI
+    palette: "purple",
+    demo: "https://aura-saas-j7pocvwbx-boarnerges-s-projects.vercel.app/",
+    github: "https://github.com/boarnerges/aura",
+    poster: auraPoster,
   },
 
   {
     id: 2,
     title: "Admin Dashboard",
-    description: "Provided a centralized system for monitoring key metrics and managing operational records. Developed a responsive admin interface using React and Tailwind CSS.",
+    description:
+      "Provided a centralized system for monitoring key metrics and managing operational records. Developed a responsive admin interface using React and Tailwind CSS.",
     role: "Solo Engineer",
     stack: ["Dashboard", "React", "Tailwind"],
     impact: "Enabled 24/7 monitoring with 42 widgets and 4 KPI panels.",
     isAI: false,
     palette: "amber",
-    demo: "https://boarnergesdashboard.netlify.app/",
+    demo: "https://admin-dashboard-phi-navy-88.vercel.app/",
     github: "https://github.com/boarnerges/admin-dashboard",
     poster: adminDashboardPoster,
   },
   {
     id: 3,
     title: "Student Management Platform",
-    description: "Addressed inefficient processes for managing student information and academic progress. Built a comprehensive solution with React and Tailwind for data tracking and notifications.",
+    description:
+      "Addressed inefficient processes for managing student information and academic progress. Built a comprehensive solution with React and Tailwind for data tracking and notifications.",
     role: "Solo Engineer",
     stack: ["Management", "React", "Tailwind"],
-    impact: "Successfully managed 2k students, 87% completion rates, real-time notices.",
+    impact:
+      "Successfully managed 2k students, 87% completion rates, real-time notices.",
     isAI: false,
     palette: "sky",
-    demo: "https://studmanagement.netlify.app/",
+    demo: "https://student-management-beta-rouge.vercel.app/",
     github: "https://github.com/boarnerges/student-management-platform",
     poster: studentPlatformPoster,
   },
+
   {
-    id: 4,
-    title: "Aura",
-    description: "Created a scalable SaaS application with robust user management and dynamic content generation. Developed with Next.js, Supabase, and Clerk, including Open Graph image generation.",
+    id: 1,
+    title: "Job Portal",
+    description:
+      "Streamlined job discovery and application processes for users. Built a responsive platform with React and Vite, focusing on dynamic UI and efficient workflows.",
     role: "Solo Engineer",
-    stack: ["Next.js", "SaaS", "Supabase", "Clerk"],
-    impact: "Functional SaaS platform with secure user profiles and automated OG image generation.",
-    isAI: false, // Assuming not an AI project, but could be if OG generation uses AI
-    palette: "purple",
-    demo: "https://boarnerges-aura.netlify.app/",
-    github: "https://github.com/boarnerges/aura",
-    poster: auraPoster,
+    stack: ["React", "Vite", "Responsive UI"],
+    impact:
+      "Improved user engagement with 120+ roles listed, 3.2s application flow.",
+    isAI: false,
+    palette: "teal",
+    demo: "https://job-application-nine-khaki.vercel.app/",
+    github: "https://github.com/boarnerges/Job-Application",
+    poster: jobPortalPoster,
   },
 ];
 
@@ -110,10 +118,25 @@ function Portfolio() {
 
         <div className="portfolio__container">
           {data.map((project, index) => {
-            const { id, title, role, description, impact, stack, isAI, palette, demo, github, poster } = project;
-            
+            const {
+              id,
+              title,
+              role,
+              description,
+              impact,
+              stack,
+              isAI,
+              palette,
+              demo,
+              github,
+              poster,
+            } = project;
+
             // Apply metric bolding
-            const boldedImpact = impact.replace(/(\d+%|\d+\.\d+s|\d+k|\d+\+)/g, "<strong>$1</strong>");
+            const boldedImpact = impact.replace(
+              /(\d+%|\d+\.\d+s|\d+k|\d+\+)/g,
+              "<strong>$1</strong>",
+            );
 
             return (
               <article
@@ -145,17 +168,24 @@ function Portfolio() {
                 <div className="portfolio__item-body">
                   <div className="portfolio__item-badges">
                     <span className="portfolio__item-role">{role}</span>
-                    {isAI && <span className="portfolio__item-badge-ai">AI</span>}
+                    {isAI && (
+                      <span className="portfolio__item-badge-ai">AI</span>
+                    )}
                   </div>
                   <div>
                     <h3>{title}</h3>
                     <p className="portfolio__item-description">{description}</p>
-                    <p 
+                    <p
                       className="portfolio__item-impact"
-                      dangerouslySetInnerHTML={{ __html: `Impact: ${boldedImpact}` }}
+                      dangerouslySetInnerHTML={{
+                        __html: `Impact: ${boldedImpact}`,
+                      }}
                     />
                   </div>
-                  <div className="portfolio__tags" aria-label={`${title} technologies`}>
+                  <div
+                    className="portfolio__tags"
+                    aria-label={`${title} technologies`}
+                  >
                     {stack.map((tech) => (
                       <span key={tech}>{tech}</span>
                     ))}

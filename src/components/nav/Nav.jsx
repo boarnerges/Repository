@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { Home, User, Briefcase, FolderCode, Cpu, Workflow, MessageSquare } from "lucide-react";
 import "./nav.css";
 
