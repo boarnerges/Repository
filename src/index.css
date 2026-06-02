@@ -32,9 +32,28 @@
   --container-width-sm: 91%;
 }
 
+[data-theme='light'] {
+  --color-bg: oklch(98% 0.005 243);
+  --color-bg-deep: oklch(95% 0.005 243);
+  --color-panel: oklch(92% 0.01 235);
+  --color-panel-strong: oklch(88% 0.015 217);
+  --color-ink: oklch(20% 0.02 243);
+  --color-muted: oklch(45% 0.025 226);
+  --color-soft: oklch(55% 0.03 226);
+  --color-primary: oklch(65% 0.18 156);
+  --color-primary-strong: oklch(55% 0.19 156);
+  --color-ember: oklch(65% 0.18 58);
+  --color-line: oklch(85% 0.02 224 / 0.8);
+  --page-background: 
+    radial-gradient(circle at 78% 8%, oklch(90% 0.08 157 / 0.15), transparent 24rem),
+    linear-gradient(150deg, var(--color-bg-deep) 0%, var(--color-bg) 48%, oklch(96% 0.02 275) 100%);
+  --shadow-lift: 0 10px 40px oklch(20% 0.02 243 / 0.08);
+}
+
 html {
   background: var(--page-background);
   scroll-behavior: smooth;
+  transition: background var(--transition);
 }
 
 ::-webkit-scrollbar {

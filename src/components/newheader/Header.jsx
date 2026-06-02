@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import "./newHeader.css";
 import BoarnergesLogo from "../boarnergesLogo/BoarnergesLogo";
@@ -101,14 +102,14 @@ export default function Header() {
             </motion.h1>
 
             <div className="hero-actions">
-              <a href="#portfolio" className="hero-button hero-button--primary" style={{ backgroundColor: activeRole.color, borderColor: activeRole.color }}>
+              <Link to="/portfolio" className="hero-button hero-button--primary" style={{ backgroundColor: activeRole.color, borderColor: activeRole.color }}>
                 <span>See the work</span>
                 <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden="true" />
-              </a>
-              <a href="#cta" className="hero-button hero-button--quiet">
+              </Link>
+              <Link to="/contact" className="hero-button hero-button--quiet">
                 <Mail size={18} strokeWidth={2.1} aria-hidden="true" />
                 <span>Contact Segun</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

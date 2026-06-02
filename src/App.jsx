@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import About from "./components/about/About";
 import Experience from "./components/experience/Experience";
@@ -7,19 +8,20 @@ import AiAutomation from "./components/ai-automation/AiAutomation";
 import Process from "./components/process/Process";
 import Cta from "./components/cta/Cta";
 import Header from "./components/newheader/Header";
+import Footer from "./components/footer/Footer";
 
-const App = () => {
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-    if (window.location.hash) {
-      window.history.replaceState(null, "", window.location.pathname + window.location.search);
-    }
+  return null;
+};
 
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
+const RevealOnScroll = () => {
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
@@ -51,19 +53,37 @@ const App = () => {
     revealItems.forEach((item) => observer.observe(item));
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
+  return null;
+};
+
+const Layout = ({ children }) => {
   return (
     <>
       <Nav />
-      <Header />
-      <About />
-      <Experience />
-      <Portfolio />
-      <AiAutomation />
-      <Process />
-      <Cta />
+      <main>{children}</main>
+      <Footer />
     </>
+  );
+};
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <RevealOnScroll />
+      <Routes>
+        <Route path="/" element={<Layout><Header /></Layout>} />
+        <Route path="/about" element={<Layout><About /></Layout>} />
+        <Route path="/experience" element={<Layout><Experience /></Layout>} />
+        <Route path="/portfolio" element={<Layout><Portfolio /></Layout>} />
+        <Route path="/ai-automation" element={<Layout><AiAutomation /></Layout>} />
+        <Route path="/process" element={<Layout><Process /></Layout>} />
+        <Route path="/contact" element={<Layout><Cta /></Layout>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

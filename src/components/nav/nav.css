@@ -7,15 +7,16 @@ nav {
   bottom: 1.5rem;
   box-shadow: 0 10px 40px oklch(0% 0 0 / 0.35);
   display: flex;
+  align-items: center;
   gap: 0.35rem;
   left: 50%;
   padding: 0.45rem;
   position: fixed;
   width: max-content;
-  z-index: 100;
+  z-index: 1000;
 }
 
-nav a {
+nav a, .theme-toggle {
   align-items: center;
   border-radius: 999px;
   color: var(--color-soft);
@@ -25,9 +26,12 @@ nav a {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   width: 2.75rem;
   position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-nav a:hover {
+nav a:hover, .theme-toggle:hover {
   background: var(--color-panel);
   color: var(--color-primary);
   transform: translateY(-3px);
@@ -37,6 +41,13 @@ nav a.active {
   background: var(--color-primary);
   color: var(--color-bg-deep);
   box-shadow: 0 0 15px var(--color-primary);
+}
+
+.nav-divider {
+  width: 1px;
+  height: 1.5rem;
+  background: var(--color-line);
+  margin: 0 0.5rem;
 }
 
 .nav-tooltip {
@@ -54,6 +65,7 @@ nav a.active {
   text-transform: uppercase;
   transform: translateX(-50%);
   white-space: nowrap;
+  z-index: 1001;
 }
 
 @media screen and (max-width: 480px) {
@@ -63,12 +75,16 @@ nav a.active {
     bottom: 1rem;
   }
 
-  nav a {
+  nav a, .theme-toggle {
     height: 2.4rem;
     width: 2.4rem;
   }
   
   .nav-tooltip {
     display: none;
+  }
+
+  .nav-divider {
+    margin: 0 0.25rem;
   }
 }
