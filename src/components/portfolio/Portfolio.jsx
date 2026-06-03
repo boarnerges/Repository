@@ -18,7 +18,7 @@ const data = [
       "Functional SaaS platform with secure user profiles and automated OG image generation.",
     isAI: false, // Assuming not an AI project, but could be if OG generation uses AI
     palette: "purple",
-    demo: "https://aura-saas-4b0woh2hx-boarnerges-s-projects.vercel.app/",
+    demo: "https://boarnergesolu.netlify.app/",
     github: "https://github.com/boarnerges/aura",
     poster: auraPoster,
   },

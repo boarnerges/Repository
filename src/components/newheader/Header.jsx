@@ -1,33 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import "./newHeader.css";
 import BoarnergesLogo from "../boarnergesLogo/BoarnergesLogo";
-import { ArrowUpRight, Mail, Sparkles } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 
 const focusRoles = [
-  { label: "Software Engineering", color: "oklch(75% 0.18 156)" }, // Greenish
-  { label: "Technical Product Management", color: "oklch(70% 0.2 25)" }, // Ember/Orange
-  { label: "AI & Agents", color: "oklch(65% 0.25 260)" }, // Electric Blue
-  { label: "Automation", color: "oklch(75% 0.15 320)" } // Purple
+  { label: "Software Engineering", color: "oklch(75% 0.18 156)" },
+  { label: "Technical Product Management", color: "oklch(70% 0.2 25)" },
+  { label: "AI & Agents", color: "oklch(65% 0.25 260)" },
+  { label: "Automation", color: "oklch(75% 0.15 320)" }
 ];
 
 export default function Header() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoCycle, setIsAutoCycle] = useState(true);
-
-  useEffect(() => {
-    if (!isAutoCycle) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % focusRoles.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, [isAutoCycle]);
-
-  const handleFocusClick = (index) => {
-    setCurrentIndex(index);
-    setIsAutoCycle(false);
-  };
 
   const activeRole = focusRoles[currentIndex];
 
@@ -36,81 +22,62 @@ export default function Header() {
       <BoarnergesLogo />
 
       <main className="hero-content container">
-        <div className="hero-focus-mode">
-          <div className="hero-focus-status">
-            <motion.span 
-              animate={{ 
-                opacity: [0.4, 1, 0.4], 
-                scale: [1, 1.2, 1],
-                boxShadow: [
-                  `0 0 4px ${activeRole.color}`,
-                  `0 0 12px ${activeRole.color}`,
-                  `0 0 4px ${activeRole.color}`
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="status-dot"
-              style={{ backgroundColor: activeRole.color }}
-            />
-            <span className="status-text" style={{ color: activeRole.color }}>
-              {isAutoCycle ? "AUTO-CYCLING" : "MANUAL LOCK"}: {activeRole.label.toUpperCase()}
-            </span>
-          </div>
-          
-          <div className="hero-badges">
-            {focusRoles.map((role, index) => (
-              <motion.button
-                key={role.label}
-                onClick={() => handleFocusClick(index)}
-                initial={false}
-                animate={{
-                  opacity: currentIndex === index ? 1 : 0.4,
-                  scale: currentIndex === index ? 1.05 : 1,
-                  backgroundColor: currentIndex === index ? activeRole.color : "transparent",
-                  borderColor: currentIndex === index ? activeRole.color : "var(--color-line)",
-                  color: currentIndex === index ? "var(--color-bg-deep)" : "var(--color-soft)"
-                }}
-                className={`hero-badge ${currentIndex === index ? "hero-badge--active" : ""}`}
-                style={{ cursor: "pointer", borderStyle: "solid" }}
-              >
-                {role.label}
-              </motion.button>
-            ))}
-          </div>
-        </div>
-
         <div className="hero-grid">
           <div className="hero-copy-block">
-            <motion.p 
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="hero-intro"
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hero-badges"
             >
-              Orchestrating the Agentic Shift.
-            </motion.p>
+              {focusRoles.map((role, index) => (
+                <button
+                  key={role.label}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`hero-tag ${currentIndex === index ? "hero-tag--active" : ""}`}
+                  style={{ 
+                    "--tag-color": role.color,
+                  }}
+                >
+                  {role.label}
+                </button>
+              ))}
+            </motion.div>
             
             <motion.h1
-              key="hero-h1"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
               className="hero-title"
             >
-              Precision-engineered. <br />
-              Product obsessed. <br />
-              I build, lead, and ship <span>agentic systems.</span>
+              Building the future of <span>intent.</span>
             </motion.h1>
 
-            <div className="hero-actions">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="hero-description"
+            >
+              Precision-engineered systems. Product-led strategy. <br />
+              I build, lead, and ship agentic software that reasons and acts.
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hero-actions"
+            >
               <Link to="/portfolio" className="hero-button hero-button--primary" style={{ backgroundColor: activeRole.color, borderColor: activeRole.color }}>
-                <span>See the work</span>
+                <span>View Projects</span>
                 <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden="true" />
               </Link>
               <Link to="/contact" className="hero-button hero-button--quiet">
                 <Mail size={18} strokeWidth={2.1} aria-hidden="true" />
-                <span>Contact Segun</span>
+                <span>Get in touch</span>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </main>
