@@ -1,6 +1,16 @@
-import { useEffect, useState } from "react";
-import "./portfolio.css";
+import { useState } from "react";
 import { ArrowUpRight, ExternalLink, Eye, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+
 import jobPortalPoster from "../../assets/job-portal.jpg";
 import adminDashboardPoster from "../../assets/admin-dashboard.jpg";
 import studentPlatformPoster from "../../assets/dice-game.jpg";
@@ -10,24 +20,20 @@ const data = [
   {
     id: 4,
     title: "Aura",
-    description:
-      "Created a scalable SaaS application with robust user management and dynamic content generation. Developed with Next.js, Supabase, and Clerk, including Open Graph image generation.",
+    description: "Created a scalable SaaS application with robust user management and dynamic content generation. Developed with Next.js, Supabase, and Clerk, including Open Graph image generation.",
     role: "Solo Engineer",
     stack: ["Next.js", "SaaS", "Supabase", "Clerk"],
-    impact:
-      "Functional SaaS platform with secure user profiles and automated OG image generation.",
-    isAI: false, // Assuming not an AI project, but could be if OG generation uses AI
+    impact: "Functional SaaS platform with secure user profiles and automated OG image generation.",
+    isAI: false,
     palette: "purple",
     demo: "https://boarnergesolu.netlify.app/",
     github: "https://github.com/boarnerges/aura",
     poster: auraPoster,
   },
-
   {
     id: 2,
     title: "Admin Dashboard",
-    description:
-      "Provided a centralized system for monitoring key metrics and managing operational records. Developed a responsive admin interface using React and Tailwind CSS.",
+    description: "Provided a centralized system for monitoring key metrics and managing operational records. Developed a responsive admin interface using React and Tailwind CSS.",
     role: "Solo Engineer",
     stack: ["Dashboard", "React", "Tailwind"],
     impact: "Enabled 24/7 monitoring with 42 widgets and 4 KPI panels.",
@@ -40,28 +46,23 @@ const data = [
   {
     id: 3,
     title: "Student Management Platform",
-    description:
-      "Addressed inefficient processes for managing student information and academic progress. Built a comprehensive solution with React and Tailwind for data tracking and notifications.",
+    description: "Addressed inefficient processes for managing student information and academic progress. Built a comprehensive solution with React and Tailwind for data tracking and notifications.",
     role: "Solo Engineer",
     stack: ["Management", "React", "Tailwind"],
-    impact:
-      "Successfully managed 2k students, 87% completion rates, real-time notices.",
+    impact: "Successfully managed 2k students, 87% completion rates, real-time notices.",
     isAI: false,
     palette: "sky",
     demo: "https://student-management-beta-rouge.vercel.app/",
     github: "https://github.com/boarnerges/student-management-platform",
     poster: studentPlatformPoster,
   },
-
   {
     id: 1,
     title: "Job Portal",
-    description:
-      "Streamlined job discovery and application processes for users. Built a responsive platform with React and Vite, focusing on dynamic UI and efficient workflows.",
+    description: "Streamlined job discovery and application processes for users. Built a responsive platform with React and Vite, focusing on dynamic UI and efficient workflows.",
     role: "Solo Engineer",
     stack: ["React", "Vite", "Responsive UI"],
-    impact:
-      "Improved user engagement with 120+ roles listed, 3.2s application flow.",
+    impact: "Improved user engagement with 120+ roles listed, 3.2s application flow.",
     isAI: false,
     palette: "teal",
     demo: "https://job-application-nine-khaki.vercel.app/",
@@ -79,44 +80,23 @@ function Portfolio() {
     setActiveProject(project);
   };
 
-  const closePreview = () => {
-    setActiveProject(null);
-    setPreviewLoaded(false);
-  };
-
-  useEffect(() => {
-    if (!activeProject) return undefined;
-
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        closePreview();
-      }
-    };
-
-    document.body.classList.add("portfolio-modal-open");
-    window.addEventListener("keydown", handleEscape);
-
-    return () => {
-      document.body.classList.remove("portfolio-modal-open");
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, [activeProject]);
-
   return (
-    <section id="portfolio" className="portfolio">
+    <section id="portfolio" className="py-20">
       <div className="container">
-        <div className="portfolio__header" data-reveal>
-          <p className="section-kicker">Selected work</p>
-          <div>
-            <h2>Deployments: Architecting for impact and scale.</h2>
-            <a href="#cta">
-              <span>Start a conversation</span>
-              <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden="true" />
-            </a>
+        <div className="flex flex-col gap-6 mb-12 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+          <div className="flex-1">
+            <p className="text-primary text-[0.78rem] font-extrabold tracking-[0.14em] uppercase mb-3">Selected work</p>
+            <h2 className="text-[clamp(2rem,5vw,4.8rem)] font-extrabold leading-tight max-w-[15ch]">Deployments: Architecting for impact and scale.</h2>
           </div>
+          <Button asChild variant="outline" size="lg" className="h-12 px-6 font-bold hover:-translate-y-1 transition-transform sm:flex-none">
+            <a href="#cta">
+              Start a conversation
+              <ArrowUpRight className="ml-2" />
+            </a>
+          </Button>
         </div>
 
-        <div className="portfolio__container">
+        <div className="grid grid-cols-6 gap-6 max-md:grid-cols-1">
           {data.map((project, index) => {
             const {
               id,
@@ -132,163 +112,144 @@ function Portfolio() {
               poster,
             } = project;
 
-            // Apply metric bolding
             const boldedImpact = impact.replace(
               /(\d+%|\d+\.\d+s|\d+k|\d+\+)/g,
-              "<strong>$1</strong>",
+              "<strong class='text-primary'>$1</strong>",
             );
 
+            const isFeatured = index === 0;
+
             return (
-              <article
+              <Card
                 key={id}
-                className={`portfolio__item ${index === 0 ? "portfolio__item--featured" : ""}`}
+                className={cn(
+                  "overflow-hidden border-border bg-card transition-all duration-300 hover:border-primary hover:-translate-y-2 group shadow-xl",
+                  isFeatured ? "col-span-6 grid grid-cols-2 max-lg:grid-cols-1" : "col-span-3 max-lg:col-span-6"
+                )}
                 data-reveal
                 style={{ "--reveal-delay": `${Math.min(index, 3) * 80}ms` }}
               >
-                <button
-                  type="button"
-                  className={`portfolio__item-visual palette-${palette}`}
+                <div 
+                  className={cn(
+                    "relative cursor-pointer overflow-hidden aspect-[16/10] bg-muted",
+                    isFeatured && "h-full min-h-[28rem] max-lg:aspect-[16/10] max-lg:min-h-0"
+                  )}
                   onClick={() => openPreview(project)}
-                  aria-label={`Preview ${title}`}
                 >
-                  <div className="portfolio__visual-live-wrap">
-                    <img
-                      src={poster}
-                      alt={`${title} poster preview`}
-                      className="portfolio__visual-poster"
-                      loading="lazy"
-                    />
-                    <span className="portfolio__visual-cue">
-                      <Eye size={15} strokeWidth={2.2} aria-hidden="true" />
-                      Preview site
-                    </span>
+                  <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-transparent to-black/60 opacity-70 group-hover:opacity-40 transition-opacity" />
+                  <img
+                    src={poster}
+                    alt={title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-4 right-4 z-20">
+                    <Badge className="bg-foreground text-background font-bold px-3 py-1.5 rounded-full flex items-center gap-2 group-hover:scale-105 transition-transform group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                      <Eye size={14} strokeWidth={3} />
+                      Preview
+                    </Badge>
                   </div>
-                </button>
+                </div>
 
-                <div className="portfolio__item-body">
-                  <div className="portfolio__item-badges">
-                    <span className="portfolio__item-role">{role}</span>
+                <div className="flex flex-col p-8 max-sm:p-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge variant="outline" className="rounded-full border-border text-muted-foreground font-bold tracking-wider uppercase text-[0.65rem] px-3">
+                      {role}
+                    </Badge>
                     {isAI && (
-                      <span className="portfolio__item-badge-ai">AI</span>
+                      <Badge className="bg-orange-500 text-white border-none rounded-full font-bold tracking-wider uppercase text-[0.65rem] px-3">
+                        AI
+                      </Badge>
                     )}
                   </div>
-                  <div>
-                    <h3>{title}</h3>
-                    <p className="portfolio__item-description">{description}</p>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-extrabold mb-3 leading-tight sm:text-3xl">{title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">{description}</p>
                     <p
-                      className="portfolio__item-impact"
+                      className="text-sm font-bold leading-relaxed mb-6"
                       dangerouslySetInnerHTML={{
                         __html: `Impact: ${boldedImpact}`,
                       }}
                     />
                   </div>
-                  <div
-                    className="portfolio__tags"
-                    aria-label={`${title} technologies`}
-                  >
+
+                  <div className="flex flex-wrap gap-2 mb-8">
                     {stack.map((tech) => (
-                      <span key={tech}>{tech}</span>
+                      <Badge key={tech} variant="secondary" className="rounded-full text-[0.7rem] px-3 py-0.5 font-bold border-none">
+                        {tech}
+                      </Badge>
                     ))}
                   </div>
-                </div>
 
-                <div className="portfolio__item-cta">
-                  <a
-                    href={demo}
-                    className="btn btn-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>Live Demo</span>
-                    <ExternalLink
-                      size={16}
-                      strokeWidth={2}
-                      aria-hidden="true"
-                    />
-                  </a>
-                  {github && (
-                    <a
-                      href={github}
-                      className="btn btn-secondary"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span>GitHub</span>
-                      <ExternalLink
-                        size={16}
-                        strokeWidth={2}
-                        aria-hidden="true"
-                      />
-                    </a>
-                  )}
+                  <div className="grid grid-cols-2 gap-3 mt-auto max-sm:grid-cols-1">
+                    <Button asChild className="font-bold">
+                      <a href={demo} target="_blank" rel="noopener noreferrer">
+                        Live Demo
+                        <ExternalLink size={16} className="ml-2" />
+                      </a>
+                    </Button>
+                    {github && (
+                      <Button asChild variant="secondary" className="font-bold border border-border/50 hover:border-primary/50 transition-colors">
+                        <a href={github} target="_blank" rel="noopener noreferrer">
+                          GitHub
+                          <ExternalLink size={16} className="ml-2" />
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </article>
+              </Card>
             );
           })}
         </div>
       </div>
 
-      {activeProject && (
-        <div
-          className="portfolio__modal"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${activeProject.title} live preview`}
-        >
-          <button
-            type="button"
-            className="portfolio__modal-backdrop"
-            aria-label="Close preview"
-            onClick={closePreview}
-          />
-
-          <div className="portfolio__modal-content">
-            <div className="portfolio__modal-head">
-              <div>
-                <h3>{activeProject.title}</h3>
-                <p>Live website preview</p>
-              </div>
-              <div className="portfolio__modal-actions">
-                <a
-                  href={activeProject.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                >
-                  <span>Open Live</span>
-                  <ExternalLink size={16} strokeWidth={2} aria-hidden="true" />
-                </a>
-                <button
-                  type="button"
-                  className="portfolio__modal-close"
-                  onClick={closePreview}
-                  aria-label="Close preview"
-                >
-                  <X size={18} aria-hidden="true" />
-                </button>
+      <Dialog open={!!activeProject} onOpenChange={(open) => !open && setActiveProject(null)}>
+        <DialogContent className="max-w-[95vw] w-full h-[90vh] p-0 overflow-hidden border-border bg-background sm:rounded-xl">
+          <div className="flex flex-col h-full">
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <DialogHeader className="text-left space-y-0">
+                <DialogTitle className="text-lg font-bold">{activeProject?.title}</DialogTitle>
+                <p className="text-xs text-muted-foreground">Live website preview</p>
+              </DialogHeader>
+              <div className="flex items-center gap-3 mr-8">
+                <Button asChild size="sm" className="font-bold h-9 px-4">
+                  <a href={activeProject?.demo} target="_blank" rel="noopener noreferrer">
+                    Open Live
+                    <ExternalLink size={14} className="ml-2" />
+                  </a>
+                </Button>
               </div>
             </div>
 
-            <div className="portfolio__modal-frame-wrap">
+            <div className="flex-1 bg-muted relative">
               {!previewLoaded && (
-                <div className="portfolio__modal-loading">
-                  <span>Loading live preview...</span>
-                  <small>If it does not appear, click Open Live.</small>
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mb-4" />
+                  <span className="font-bold">Loading live preview...</span>
+                  <small className="text-muted-foreground mt-1 text-xs">If it does not appear, click Open Live.</small>
                 </div>
               )}
-              <iframe
-                title={`${activeProject.title} live preview`}
-                src={activeProject.demo}
-                loading="lazy"
-                className={`portfolio__modal-frame ${previewLoaded ? "is-ready" : ""}`}
-                onLoad={() => setPreviewLoaded(true)}
-              />
+              {activeProject && (
+                <iframe
+                  title={`${activeProject.title} live preview`}
+                  src={activeProject.demo}
+                  loading="lazy"
+                  className={cn(
+                    "w-full h-full border-none transition-opacity duration-300",
+                    previewLoaded ? "opacity-100" : "opacity-0"
+                  )}
+                  onLoad={() => setPreviewLoaded(true)}
+                />
+              )}
             </div>
           </div>
-        </div>
-      )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
 
 export default Portfolio;
+

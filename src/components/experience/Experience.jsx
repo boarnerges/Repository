@@ -1,4 +1,6 @@
-import "./experience.css";
+import { Card as ShadcnCard, CardHeader as ShadcnCardHeader, CardContent as ShadcnCardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 const workExperience = [
   {
@@ -49,47 +51,57 @@ const notablePartnerships = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="experience-section container" data-reveal>
-      <p className="section-kicker">History</p>
-      <h2>Strategic history: Orchestrating growth across product and engineering.</h2>
+    <section id="experience" className="container py-20" data-reveal>
+      <p className="text-primary text-[0.78rem] font-extrabold tracking-[0.14em] uppercase mb-3">History</p>
+      <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-extrabold leading-tight mb-12 max-w-[35ch]">Strategic history: Orchestrating growth across product and engineering.</h2>
 
-      <div className="experience-list">
+      <div className="flex flex-col gap-6">
         {workExperience.map((job, index) => (
-          <article key={index} className="experience-item">
-            <div className="experience-header">
-              <div className="experience-main-info">
-                <h3 className="experience-role-title">{job.title}</h3>
-                <p className="experience-company">{job.company}</p>
+          <ShadcnCard key={index} className="border-border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 group">
+            <ShadcnCardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4">
+              <div className="space-y-1">
+                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{job.title}</h3>
+                <p className="text-muted-foreground font-semibold">{job.company}</p>
               </div>
-              <p className="experience-date">{job.dateRange}</p>
-            </div>
+              <Badge variant="outline" className="w-fit h-fit mt-2 sm:mt-0 font-bold border-border text-muted-foreground">
+                {job.dateRange}
+              </Badge>
+            </ShadcnCardHeader>
             
-            <ul className="experience-bullets">
-              {job.bulletPoints.map((point, idx) => {
-                // Symmetrically bold metrics like "20%" or "3.2s"
-                const boldedPoint = point.replace(/(\d+%|\d+\.\d+s|\d+\s?days|\d+k)/g, "<strong>$1</strong>");
-                return (
-                  <li key={idx} dangerouslySetInnerHTML={{ __html: boldedPoint }} />
-                );
-              })}
-            </ul>
-            
-            <div className="experience-tags" aria-label="Technologies used">
-              {job.tech.map((t) => (
-                <span key={t} className="experience-tag">{t}</span>
-              ))}
-            </div>
-          </article>
+            <ShadcnCardContent>
+              <ul className="space-y-3 mb-6">
+                {job.bulletPoints.map((point, idx) => {
+                  const boldedPoint = point.replace(/(\d+%|\d+\.\d+s|\d+\s?days|\d+k)/g, "<strong class='text-primary'>$1</strong>");
+                  return (
+                    <li 
+                      key={idx} 
+                      className="text-sm text-muted-foreground leading-relaxed flex gap-3 before:content-['•'] before:text-primary before:font-bold"
+                      dangerouslySetInnerHTML={{ __html: boldedPoint }} 
+                    />
+                  );
+                })}
+              </ul>
+              
+              <div className="flex flex-wrap gap-2" aria-label="Technologies used">
+                {job.tech.map((t) => (
+                  <Badge key={t} variant="secondary" className="text-[0.65rem] uppercase tracking-wider font-bold px-2.5 py-0.5 border-none">
+                    {t}
+                  </Badge>
+                ))}
+              </div>
+            </ShadcnCardContent>
+          </ShadcnCard>
         ))}
       </div>
 
       {notablePartnerships.length > 0 && (
-        <div className="notable-partnerships">
-          <h3>Notable Partnerships</h3>
-          <ul>
+        <div className="mt-16 p-8 rounded-xl border border-border bg-muted/30">
+          <h3 className="text-xl font-bold mb-6">Notable Partnerships</h3>
+          <ul className="grid grid-cols-2 gap-8 max-sm:grid-cols-1">
             {notablePartnerships.map((partner, index) => (
-              <li key={index}>
-                <strong>{partner.name}:</strong> {partner.description}
+              <li key={index} className="space-y-1">
+                <strong className="text-primary block text-lg">{partner.name}</strong>
+                <span className="text-muted-foreground text-sm leading-relaxed">{partner.description}</span>
               </li>
             ))}
           </ul>

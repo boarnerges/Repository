@@ -9,6 +9,7 @@ import Process from "./components/process/Process";
 import Cta from "./components/cta/Cta";
 import Header from "./components/newheader/Header";
 import Footer from "./components/footer/Footer";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -71,18 +72,20 @@ const Layout = ({ children }) => {
 const App = () => {
   return (
     <BrowserRouter>
-      <ScrollToTop />
-      <RevealOnScroll />
-      <Routes>
-        <Route path="/" element={<Layout><Header /></Layout>} />
-        <Route path="/about" element={<Layout><About /></Layout>} />
-        <Route path="/experience" element={<Layout><Experience /></Layout>} />
-        <Route path="/portfolio" element={<Layout><Portfolio /></Layout>} />
-        <Route path="/ai-automation" element={<Layout><AiAutomation /></Layout>} />
-        <Route path="/process" element={<Layout><Process /></Layout>} />
-        <Route path="/contact" element={<Layout><Cta /></Layout>} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <TooltipProvider>
+        <ScrollToTop />
+        <RevealOnScroll />
+        <Routes>
+          <Route path="/" element={<Layout><Header /></Layout>} />
+          <Route path="/about" element={<Layout><About /></Layout>} />
+          <Route path="/experience" element={<Layout><Experience /></Layout>} />
+          <Route path="/portfolio" element={<Layout><Portfolio /></Layout>} />
+          <Route path="/ai-automation" element={<Layout><AiAutomation /></Layout>} />
+          <Route path="/process" element={<Layout><Process /></Layout>} />
+          <Route path="/contact" element={<Layout><Cta /></Layout>} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </TooltipProvider>
     </BrowserRouter>
   );
 };
