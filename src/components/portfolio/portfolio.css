@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.portfolio--subpage {
+  margin-top: 0;
+}
+
 .portfolio__header {
   align-items: end;
   display: grid;

@@ -1,5 +1,4 @@
-import { FaGithub, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 import "./cta.css";
 
 const Cta = () => {
@@ -7,8 +6,9 @@ const Cta = () => {
   const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}`;
 
   return (
-    <section id="cta" className="cta-section container" data-reveal>
+    <section id="contact" className="cta-section container" data-reveal>
       <div className="cta-content">
+        <div className="cta-glow-bg"></div>
         <div className="cta-status">
           <span className="status-indicator"></span>
           <span className="status-label">SYSTEM STATUS: READY FOR DEPLOYMENT</span>

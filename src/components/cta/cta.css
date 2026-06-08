@@ -32,6 +32,16 @@
   z-index: 1;
 }
 
+.cta-glow-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, var(--color-primary) 0%, transparent 70%);
+  opacity: 0.12;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .cta-status {
   align-items: center;
   display: flex;

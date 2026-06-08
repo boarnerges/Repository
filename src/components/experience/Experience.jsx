@@ -47,11 +47,15 @@ const notablePartnerships = [
   },
 ];
 
-const Experience = () => {
+const Experience = ({ withHeader = false }) => {
   return (
-    <section id="experience" className="experience-section container" data-reveal>
-      <p className="section-kicker">History</p>
-      <h2>Strategic history: Orchestrating growth across product and engineering.</h2>
+    <section id="experience" className={`experience-section container ${withHeader ? 'experience-section--subpage' : ''}`} data-reveal>
+      {!withHeader && (
+        <>
+          <p className="section-kicker">History</p>
+          <h2>Strategic history: Orchestrating growth across product and engineering.</h2>
+        </>
+      )}
 
       <div className="experience-list">
         {workExperience.map((job, index) => (

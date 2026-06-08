@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 
 export default function BoarnergesLogo() {
   return (
-    <div className="site-brand container">
+    <div className="site-brand">
       <motion.div 
         className="brand-mark"
         initial={{ opacity: 0, x: -20 }}

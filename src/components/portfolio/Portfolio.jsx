@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import "./portfolio.css";
-import { ArrowUpRight, ExternalLink, Eye, X } from "lucide-react";
-import jobPortalPoster from "../../assets/job-portal.jpg";
-import adminDashboardPoster from "../../assets/admin-dashboard.jpg";
-import studentPlatformPoster from "../../assets/dice-game.jpg";
-import auraPoster from "../../assets/aura.png";
+import { ArrowUpRight, ExternalLink, Eye, X, MessageSquare } from "lucide-react";
 
 const data = [
   {
@@ -16,13 +12,12 @@ const data = [
     stack: ["Next.js", "SaaS", "Supabase", "Clerk"],
     impact:
       "Functional SaaS platform with secure user profiles and automated OG image generation.",
-    isAI: false, // Assuming not an AI project, but could be if OG generation uses AI
+    isAI: false,
     palette: "purple",
     demo: "https://boarnergesolu.netlify.app/",
     github: "https://github.com/boarnerges/aura",
-    poster: auraPoster,
+    poster: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
   },
-
   {
     id: 2,
     title: "Admin Dashboard",
@@ -35,7 +30,7 @@ const data = [
     palette: "amber",
     demo: "https://admin-dashboard-phi-navy-88.vercel.app/",
     github: "https://github.com/boarnerges/admin-dashboard",
-    poster: adminDashboardPoster,
+    poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
   },
   {
     id: 3,
@@ -50,9 +45,8 @@ const data = [
     palette: "sky",
     demo: "https://student-management-beta-rouge.vercel.app/",
     github: "https://github.com/boarnerges/student-management-platform",
-    poster: studentPlatformPoster,
+    poster: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
   },
-
   {
     id: 1,
     title: "Job Portal",
@@ -66,11 +60,11 @@ const data = [
     palette: "teal",
     demo: "https://job-application-nine-khaki.vercel.app/",
     github: "https://github.com/boarnerges/Job-Application",
-    poster: jobPortalPoster,
+    poster: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200",
   },
 ];
 
-function Portfolio() {
+function Portfolio({ withHeader = false }) {
   const [activeProject, setActiveProject] = useState(null);
   const [previewLoaded, setPreviewLoaded] = useState(false);
 
@@ -103,18 +97,21 @@ function Portfolio() {
   }, [activeProject]);
 
   return (
-    <section id="portfolio" className="portfolio">
+    <section id="portfolio" className={`portfolio ${withHeader ? 'portfolio--subpage' : ''}`}>
       <div className="container">
-        <div className="portfolio__header" data-reveal>
-          <p className="section-kicker">Selected work</p>
-          <div>
-            <h2>Deployments: Architecting for impact and scale.</h2>
-            <a href="#cta">
-              <span>Start a conversation</span>
-              <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden="true" />
-            </a>
+        {!withHeader && (
+          <div className="portfolio__header" data-reveal>
+            <p className="section-kicker">Selected work</p>
+            <div>
+              <h2>Deployments: Architecting for impact and scale.</h2>
+              <a href="#contact">
+                <MessageSquare size={18} strokeWidth={2.2} aria-hidden="true" style={{marginRight: '0.5rem'}} />
+                <span>Start a conversation</span>
+                <ArrowUpRight size={18} strokeWidth={2.2} aria-hidden="true" />
+              </a>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="portfolio__container">
           {data.map((project, index) => {

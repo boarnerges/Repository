@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import "./newHeader.css";
 import BoarnergesLogo from "../boarnergesLogo/BoarnergesLogo";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail, Code, Cpu, Database } from "lucide-react";
+import myPortrait from "../../assets/me-blue.png";
 
 const focusRoles = [
   { label: "Software Engineering", color: "oklch(75% 0.18 156)" },
@@ -17,9 +18,18 @@ export default function Header() {
 
   const activeRole = focusRoles[currentIndex];
 
+  const heroBg = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600";
+
   return (
     <header id="home" className="site-header" style={{ "--focus-color": activeRole.color }}>
-      <BoarnergesLogo />
+      <div className="hero-bg-image-wrap">
+        <div className="hero-bg-overlay"></div>
+        <img src={heroBg} alt="" className="hero-bg-image" />
+      </div>
+
+      <div className="container">
+        <BoarnergesLogo />
+      </div>
 
       <main className="hero-content container">
         <div className="hero-grid">
@@ -79,6 +89,47 @@ export default function Header() {
               </Link>
             </motion.div>
           </div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="hero-visual-block"
+          >
+            <div className="hero-visual-glow"></div>
+
+            {/* Decorative Floating Icons */}
+            <motion.div 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="floating-icon icon-1"
+            >
+              <Code size={20} color={activeRole.color} />
+            </motion.div>
+            <motion.div 
+              animate={{ y: [0, 15, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="floating-icon icon-2"
+            >
+              <Cpu size={20} color="oklch(70% 0.17 294)" />
+            </motion.div>
+            <motion.div 
+              animate={{ x: [0, 10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="floating-icon icon-3"
+            >
+              <Database size={20} color="oklch(75% 0.18 58)" />
+            </motion.div>
+
+            <div className="hero-portrait-wrap">
+              <div className="hero-portrait-overlay"></div>
+              <img src={myPortrait} alt="Segun portrait" />
+              <div className="hero-portrait-badge">
+                <div className="status-dot"></div>
+                <span>Based in Abuja, Nigeria</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </main>
     </header>
