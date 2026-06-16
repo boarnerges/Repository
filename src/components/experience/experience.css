@@ -31,7 +31,8 @@
 .experience-header {
   align-items: flex-start;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
   margin-bottom: 1.25rem;
 }
 
@@ -55,7 +56,7 @@
   font-size: 0.82rem;
   font-weight: 700;
   margin: 0;
-  padding-top: 0.4rem;
+  padding-top: 0;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -110,14 +111,15 @@
   padding: 0.35rem 0.6rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .experience-header {
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
   }
-  
+
   .experience-date {
-    padding-top: 0;
+    padding-top: 0.4rem;
   }
 }
 

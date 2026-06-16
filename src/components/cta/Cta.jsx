@@ -1,10 +1,8 @@
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
 import "./cta.css";
+import ContactForm from "../contact/ContactForm";
 
 const Cta = () => {
-  const emailAddress = "olujawo1996@gmail.com";
-  const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(emailAddress)}`;
-
   return (
     <section id="contact" className="cta-section container" data-reveal>
       <div className="cta-content">
@@ -53,14 +51,9 @@ const Cta = () => {
           </a>
         </div>
 
-        <a
-          href={emailComposeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="cta-button"
-        >
-          <span>Start the conversation</span>
-        </a>
+        <div className="cta-form-wrap" style={{ width: '100%' }}>
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

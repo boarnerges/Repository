@@ -1,0 +1,32 @@
+.capabilities-page {
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+.capabilities-divider {
+  margin-top: clamp(4rem, 8vw, 6rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.divider-line {
+  height: 1px;
+  background: var(--color-line);
+  width: 100%;
+  opacity: 0.5;
+}
+
+.capabilities-page .ai-automation-section,
+.capabilities-page .process-section {
+  margin-top: 0;
+}
+
+.capabilities-page .ai-automation-section--subpage,
+.capabilities-page .process-section--subpage {
+  padding-top: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .capabilities-divider {
+    margin-top: clamp(6rem, 10vw, 8rem);
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+  }
+}

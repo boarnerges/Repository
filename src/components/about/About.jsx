@@ -17,9 +17,11 @@ const About = ({ withHeader = false, isSimple = false }) => {
                <h2 className="about-simple-title">The Architect & Strategist.</h2>
             )}
             <div className="about-bio-wrap">
-              <div className="about-bio-image">
-                <img src={myPortraitBlack} alt="Segun portrait in black" />
-              </div>
+              {!isSimple && (
+                <div className="about-bio-image">
+                  <img src={myPortraitBlack} alt="Segun portrait in black" loading="lazy" />
+                </div>
+              )}
               <div className="about-bio-text">
                 <p className="bio-lead">
                   Technical Product Strategist based in Abuja, Nigeria. 

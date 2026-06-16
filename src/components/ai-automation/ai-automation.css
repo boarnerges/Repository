@@ -5,7 +5,7 @@
 .ai-automation-grid {
   display: grid;
   gap: clamp(3rem, 8vw, 6rem);
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr;
 }
 
 .ai-automation-section h2 {
@@ -33,9 +33,10 @@
 }
 
 .ai-automation-stack {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .stack-label {
@@ -54,16 +55,16 @@
 }
 
 .ai-automation-callouts {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1.5rem;
+  grid-template-columns: 1fr;
 }
 
 .ai-automation-callout {
   background: var(--color-panel);
   border: 1px solid var(--color-line);
   border-radius: 12px;
-  overflow: hidden; /* contain the image */
+  overflow: hidden;
   padding: 0;
   transition: all 400ms var(--ease-out-expo);
 }
@@ -128,23 +129,21 @@
   color: var(--color-primary);
 }
 
-@media screen and (max-width: 1024px) {
-  .ai-automation-grid {
-    grid-template-columns: 1fr;
+@media screen and (min-width: 600px) {
+  .ai-automation-stack {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
   }
 
   .ai-automation-callouts {
-    display: grid;
-    gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
 
-@media screen and (max-width: 600px) {
-  .ai-automation-stack {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+@media screen and (min-width: 1024px) {
+  .ai-automation-grid {
+    grid-template-columns: 1.1fr 0.9fr;
   }
 }
 

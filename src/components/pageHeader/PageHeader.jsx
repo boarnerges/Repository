@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'motion/react';
 import './pageHeader.css';
+import BoarnergesLogo from "../boarnergesLogo/BoarnergesLogo";
 
 const PageHeader = ({ title, subtitle, kicker, bgImage }) => {
   return (
@@ -8,21 +8,23 @@ const PageHeader = ({ title, subtitle, kicker, bgImage }) => {
       {bgImage && (
         <div className="page-header__bg-wrap">
           <div className="page-header__bg-overlay"></div>
-          <img src={bgImage} alt="" className="page-header__bg-image" />
+          <img src={bgImage} alt="" className="page-header__bg-image" loading="eager" />
         </div>
       )}
+
+      <div className="container" style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 10 }}>
+        <BoarnergesLogo />
+      </div>
+
       <div className="container">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <div 
           className="page-header__content"
         >
           {kicker && <p className="section-kicker">{kicker}</p>}
           <h1 className="page-header__title">{title}</h1>
           {subtitle && <p className="page-header__subtitle">{subtitle}</p>}
           <div className="page-header__line"></div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

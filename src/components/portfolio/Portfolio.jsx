@@ -16,7 +16,7 @@ const data = [
     palette: "purple",
     demo: "https://boarnergesolu.netlify.app/",
     github: "https://github.com/boarnerges/aura",
-    poster: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
+    poster: "/images/portfolio/portfolio-1.jpg",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const data = [
     palette: "amber",
     demo: "https://admin-dashboard-phi-navy-88.vercel.app/",
     github: "https://github.com/boarnerges/admin-dashboard",
-    poster: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+    poster: "/images/portfolio/portfolio-2.jpg",
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ const data = [
     palette: "sky",
     demo: "https://student-management-beta-rouge.vercel.app/",
     github: "https://github.com/boarnerges/student-management-platform",
-    poster: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
+    poster: "/images/portfolio/portfolio-3.jpg",
   },
   {
     id: 1,
@@ -60,7 +60,7 @@ const data = [
     palette: "teal",
     demo: "https://job-application-nine-khaki.vercel.app/",
     github: "https://github.com/boarnerges/Job-Application",
-    poster: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200",
+    poster: "/images/portfolio/portfolio-4.jpg",
   },
 ];
 

@@ -1,0 +1,64 @@
+.not-found-section {
+  min-height: 80svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.not-found-content {
+  max-width: 600px;
+  position: relative;
+}
+
+.error-code {
+  font-size: clamp(8rem, 20vw, 15rem);
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.05;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: -1;
+  color: var(--color-primary);
+}
+
+.error-icon-wrap {
+  margin-bottom: 2rem;
+  color: var(--color-ember);
+  display: flex;
+  justify-content: center;
+}
+
+.error-icon {
+  animation: errorPulse 2s infinite ease-in-out;
+}
+
+@keyframes errorPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.not-found-content h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1.5rem;
+  color: var(--color-ink);
+}
+
+.not-found-content p {
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 45ch;
+  margin-inline: auto;
+}
+
+.not-found-content .btn {
+  min-height: 3.5rem;
+  padding: 0 2rem;
+  font-size: 1rem;
+}

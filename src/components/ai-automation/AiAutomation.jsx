@@ -4,17 +4,17 @@ const AiAutomation = ({ withHeader = false }) => {
   const callouts = [
     {
       title: "Agent development",
-      image: "https://images.unsplash.com/photo-1531746790731-6c087fecd05a?auto=format&fit=crop&q=80&w=800",
+      image: "/images/automation/automation-1.jpg",
       description: "Building autonomous agents that leverage tool-calling and LLM reasoning to execute <strong>multi-step tasks</strong> without manual oversight.",
     },
     {
       title: "Workflow automation",
-      image: "https://images.unsplash.com/photo-1518433278983-bc21625d5771?auto=format&fit=crop&q=80&w=800",
+      image: "/images/automation/automation-2.jpg",
       description: "Orchestrating production-grade automations in <strong>n8n and Make</strong> that reclaim <strong>10+ hours</strong> of manual engineering time per week.",
     },
     {
       title: "LLM integration",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
+      image: "/images/automation/automation-3.jpg",
       description: "Embedding intelligence into core product surfaces—from <strong>context-aware routing</strong> to automated intent extraction and synthesis.",
     },
   ];
@@ -49,7 +49,7 @@ const AiAutomation = ({ withHeader = false }) => {
           {callouts.map((callout, index) => (
             <div key={index} className="ai-automation-callout">
               <div className="callout-image-wrap">
-                <img src={callout.image} alt={callout.title} />
+                <img src={callout.image} alt={callout.title} loading="lazy" />
               </div>
               <div className="callout-header">
                 <div className="callout-dot"></div>

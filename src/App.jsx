@@ -9,6 +9,7 @@ import Process from "./components/process/Process";
 import Cta from "./components/cta/Cta";
 import Header from "./components/newheader/Header";
 import Footer from "./components/footer/Footer";
+import CaseStudy from "./components/case-study/CaseStudy";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -74,7 +75,6 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div data-reveal><About isSimple /></div>
       <div data-reveal><Expertise /></div>
       <div data-reveal><Cta /></div>
     </>
@@ -89,7 +89,7 @@ const AboutPage = () => (
       title="The Architect & Strategist." 
       subtitle="Engineering high-stakes systems with a product-first mindset. 5+ years of shipping software that works."
       kicker="About"
-      bgImage="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600"
+      bgImage="/images/hero/hero-1.jpg"
     />
     <About withHeader />
   </>
@@ -101,7 +101,7 @@ const ExperiencePage = () => (
       title="Strategic History." 
       subtitle="A record of orchestrating growth across product and engineering in high-impact environments."
       kicker="History"
-      bgImage="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600"
+      bgImage="/images/hero/hero-2.jpg"
     />
     <Experience withHeader />
   </>
@@ -113,35 +113,39 @@ const PortfolioPage = () => (
       title="Architecting for Impact." 
       subtitle="Selected deployments showcasing scalable architectures and dynamic user experiences."
       kicker="Deployments"
-      bgImage="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600"
+      bgImage="/images/hero/hero-3.jpg"
     />
     <Portfolio withHeader />
   </>
 );
 
-const AiAutomationPage = () => (
+import Capabilities from "./components/capabilities/Capabilities";
+
+const CapabilitiesPage = () => (
   <>
     <PageHeader 
-      title="The Agentic Shift." 
-      subtitle="Designing intelligent systems that reason, use tools, and execute intent at scale."
+      title="The Agentic Shift & Execution." 
+      subtitle="Designing intelligent systems and the methodology for moving from ambiguous problems to production-ready products."
       kicker="Capabilities"
-      bgImage="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1600"
+      bgImage="/images/hero/hero-4.jpg"
     />
-    <AiAutomation withHeader />
+    <Capabilities withHeader />
   </>
 );
 
-const ProcessPage = () => (
+const CaseStudyPage = () => (
   <>
     <PageHeader 
-      title="Execution Framework." 
-      subtitle="My methodology for moving from ambiguous problems to production-ready products."
-      kicker="Methodology"
-      bgImage="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1600"
+      title="Case Studies." 
+      subtitle="Deep dives into real product decisions under real constraints."
+      kicker="Work"
+      bgImage="/images/hero/hero-3.jpg"
     />
-    <Process withHeader />
+    <CaseStudy withHeader />
   </>
 );
+
+import NotFound from "./components/notFound/NotFound";
 
 const App = () => {
   return (
@@ -153,10 +157,10 @@ const App = () => {
         <Route path="/about" element={<Layout><AboutPage /></Layout>} />
         <Route path="/experience" element={<Layout><ExperiencePage /></Layout>} />
         <Route path="/portfolio" element={<Layout><PortfolioPage /></Layout>} />
-        <Route path="/ai-automation" element={<Layout><AiAutomationPage /></Layout>} />
-        <Route path="/process" element={<Layout><ProcessPage /></Layout>} />
+        <Route path="/capabilities" element={<Layout><CapabilitiesPage /></Layout>} />
+        <Route path="/case-study" element={<Layout><CaseStudyPage /></Layout>} />
         <Route path="/contact" element={<Layout><Cta /></Layout>} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Layout><NotFound /></Layout>} />
       </Routes>
     </BrowserRouter>
   );

@@ -84,11 +84,11 @@ body::before {
 
 .container {
   margin-inline: auto;
-  width: min(var(--container-width-lg), 1180px);
+  width: min(var(--container-width-sm), 1180px);
 }
 
 section {
-  margin-top: clamp(5.5rem, 9vw, 9rem);
+  margin-top: 4.5rem;
   scroll-margin-top: 2rem;
 }
 
@@ -252,18 +252,19 @@ img {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 600px) {
   .container {
-    width: var(--container-width-md);
+    width: min(var(--container-width-md), 1180px);
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 1024px) {
   .container {
-    width: var(--container-width-sm);
+    width: min(var(--container-width-lg), 1180px);
   }
 
   section {
-    margin-top: 4.5rem;
+    margin-top: clamp(5.5rem, 9vw, 9rem);
   }
 }
+

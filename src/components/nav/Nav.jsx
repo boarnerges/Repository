@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { motion, AnimatePresence } from "motion/react";
 import { Home, User, Briefcase, FolderCode, Cpu, Workflow, MessageSquare, Sun, Moon } from "lucide-react";
 import "./nav.css";
 
@@ -9,8 +8,8 @@ const navItems = [
   { to: "/about", label: "About", Icon: User },
   { to: "/experience", label: "Experience", Icon: Briefcase },
   { to: "/portfolio", label: "Projects", Icon: FolderCode },
-  { to: "/ai-automation", label: "AI/Auto", Icon: Cpu },
-  { to: "/process", label: "Process", Icon: Workflow },
+  { to: "/capabilities", label: "Capabilities", Icon: Cpu },
+  { to: "/case-study", label: "Work", Icon: Workflow },
   { to: "/contact", label: "Contact", Icon: MessageSquare },
 ];
 
@@ -28,10 +27,7 @@ const Nav = () => {
   };
 
   return (
-    <motion.nav 
-      initial={{ y: 80, x: "-50%", opacity: 0 }}
-      animate={{ y: 0, x: "-50%", opacity: 1 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.5 }}
+    <nav 
       aria-label="Primary navigation"
     >
       {navItems.map((item) => {
@@ -47,19 +43,14 @@ const Nav = () => {
             aria-label={item.label}
           >
             <Icon size={18} strokeWidth={2} />
-            
-            <AnimatePresence>
-              {hoveredItem === item.to && (
-                <motion.span
-                  initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                  animate={{ opacity: 1, y: -45, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.9 }}
+
+            {hoveredItem === item.to && (
+                <span
                   className="nav-tooltip"
                 >
                   {item.label}
-                </motion.span>
-              )}
-            </AnimatePresence>
+                </span>
+            )}
           </NavLink>
         );
       })}
@@ -74,22 +65,18 @@ const Nav = () => {
         aria-label="Toggle Theme"
       >
         {theme === "dark" ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
-        
-        <AnimatePresence>
-          {hoveredItem === "theme" && (
-            <motion.span
-              initial={{ opacity: 0, y: 10, scale: 0.9 }}
-              animate={{ opacity: 1, y: -45, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.9 }}
+
+        {hoveredItem === "theme" && (
+            <span
               className="nav-tooltip"
             >
               {theme === "dark" ? "Light Mode" : "Dark Mode"}
-            </motion.span>
-          )}
-        </AnimatePresence>
+            </span>
+        )}
       </button>
-    </motion.nav>
+    </nav>
   );
+
 };
 
 export default Nav;
